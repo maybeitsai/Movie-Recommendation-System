@@ -11,32 +11,21 @@ Dalam era digital yang terus berkembang, hiburan melalui film telah menjadi bagi
 - Pengoptimalan Konten: Produsen dan distributor film dapat menggunakan sistem rekomendasi untuk memahami tren dan preferensi pengguna, membantu mereka dalam mengoptimalkan portofolio konten mereka.
 
 ## Business Understanding
-
-Pada bagian ini, Anda perlu menjelaskan proses klarifikasi masalah.
-
-Bagian laporan ini mencakup:
+Dalam dunia yang penuh dengan pilihan film yang tak terbatas, pengguna sering kali merasa kewalahan dalam mencari konten yang sesuai dengan preferensi mereka. Oleh karena itu, kami memahami bahwa ada kebutuhan mendesak untuk menciptakan solusi yang efisien dan efektif untuk membantu pengguna menavigasi lautan film yang luas ini. Melalui pemahaman yang dalam terhadap kebutuhan pasar dan kemampuan teknologi, proyek kami bertujuan untuk menghadirkan pengalaman sinematik yang paling memuaskan bagi pengguna, sambil mendukung pertumbuhan bisnis dan industri film secara keseluruhan.
 
 ### Problem Statements
-
-Menjelaskan pernyataan masalah:
-- Pernyataan Masalah 1
-- Pernyataan Masalah 2
-- Pernyataan Masalah n
+- Kepuasan Pengguna Terhadap Pencarian Film: Pengguna sering merasa frustrasi dan kehilangan arah saat mencari film baru untuk ditonton. Mereka membutuhkan solusi yang dapat memberikan rekomendasi film yang sesuai dengan preferensi mereka dengan cepat dan akurat.
+- Meningkatkan Retensi dan Loyalitas Pengguna: Tingkat retensi dan loyalitas pengguna merupakan faktor kunci dalam keberhasilan platform streaming. Kami perlu meningkatkan pengalaman pengguna sehingga mereka merasa terhubung secara emosional dengan platform kami dan tetap setia dalam jangka panjang.
 
 ### Goals
+- Menghasilkan Rekomendasi Film yang Personal dan Akurat: Tujuan utama proyek ini adalah mengembangkan sistem rekomendasi yang dapat menganalisis preferensi pengguna dengan mendalam dan memberikan rekomendasi film yang sesuai dengan preferensi pengguna dengan tingkat kesalahan yang rendah.
 
-Menjelaskan tujuan proyek yang menjawab pernyataan masalah:
-- Jawaban pernyataan masalah 1
-- Jawaban pernyataan masalah 2
-- Jawaban pernyataan masalah n
+- Meningkatkan Tingkat Retensi dan Loyalitas Pengguna: Proyek ini juga bertujuan untuk meningkatkan tingkat retensi dan loyalitas pengguna dengan menyediakan rekomendasi film yang relevan.
 
-Semua poin di atas harus diuraikan dengan jelas. Anda bebas menuliskan berapa pernyataan masalah dan juga goals yang diinginkan.
+### Solution statements
+- Content-Based Filtering dengan Cosine Similarity: Kami akan menggunakan pendekatan ini untuk membangun model yang dapat memberikan rekomendasi film berdasarkan kesamaan konten film yang disukai oleh pengguna. Dengan menganalisis atribut genre film, kami dapat menciptakan profil pengguna yang lebih akurat dan memberikan rekomendasi yang lebih relevan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Menambahkan bagian “Solution Approach” yang menguraikan cara untuk meraih goals. Bagian ini dibuat dengan ketentuan sebagai berikut: 
-
-    ### Solution statements
-    - Mengajukan 2 atau lebih solution approach (algoritma atau pendekatan sistem rekomendasi).
+- Collaborative Filtering dengan Algoritma KMeans Clustering dan Deep Learning: Kami akan menggabungkan kedua teknik ini untuk mengidentifikasi pola-pola yang tersembunyi dalam perilaku penonton dan membuat cluster yang sesuai. Dengan demikian, kami dapat memberikan rekomendasi film yang berdasarkan pada preferensi yang serupa antar pengguna, serta menerapkan algoritma deep learning untuk menghasilkan model yang akurasi sehingga dapat membandingkan antara penggunaan algoritma KMeans dan Deep Learning.
 
 ## Data Understanding
 Paragraf awal bagian ini menjelaskan informasi mengenai jumlah data, kondisi data, dan informasi mengenai data yang digunakan. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
