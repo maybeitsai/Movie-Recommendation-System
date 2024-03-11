@@ -122,11 +122,91 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
   ![jumlah rating per tahun](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/4b2feb61-060b-484f-8d5f-83da93ab1bee)
 
 ## Data Preparation
-Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan proses data preparation yang dilakukan
-- Menjelaskan alasan mengapa diperlukan tahapan data preparation tersebut.
+### Content-Based Filtering
+- Menyalin dataset movies
+
+  Langkah pertama adalah menyalin dataset movies. Hal ini bertujuan untuk mempertahankan dataset asli dan mencegah perubahan yang tidak disengaja.
+  
+- Membuat kolom baru berdasarkan genre
+
+  Kolom baru dibuat berdasarkan genre yang terdapat dalam dataset. Hal ini penting karena content-based filtering menggunakan informasi tentang konten (misalnya, genre film) untuk membuat rekomendasi.
+  
+- Menghapus baris yang tidak memiliki genre
+
+  Baris-baris yang tidak memiliki informasi genre dihapus. Ini dilakukan agar dataset bersih dan hanya mengandung data yang relevan.
+  
+- Menampilkan data yang sudah diolah
+
+  Setelah data diproses, hasilnya ditampilkan untuk memastikan transformasi telah dilakukan dengan benar.
+  
+- Menghapus kolom yang tidak diperlukan
+
+  Kolom-kolom yang tidak diperlukan untuk proses content-based filtering dihapus. Hal ini bertujuan untuk membantu mengurangi dimensi data dan mempercepat proses komputasi.
+  
+- Menampilkan kolom pada data
+
+  Setelah kolom-kolom yang tidak diperlukan dihapus, kolom-kolom yang tersisa ditampilkan untuk memastikan data telah siap untuk digunakan dalam model.
+
+### Collaborative Filtering
+
+#### Cluster Based Algorithm
+- Melakukan import library yang dibutuhkan
+
+  Langkah pertama adalah mengimpor library atau modul yang dibutuhkan untuk menerapkan algoritma collaborative filtering berbasis cluster.
+  
+- Menggabungkan dataset ratings dan movies
+
+  Dataset ratings dan movies digabungkan untuk membuat user-item matrix yang akan digunakan dalam proses rekomendasi.
+  
+- Membuat pivot table untuk user-item
+
+  Pivot table dibuat dengan menggunakan dataset gabungan untuk menyusun user-item matrix, yang merupakan dasar dari algoritma collaborative filtering.
+  
+- Mengisi nilai null dengan 0
+  
+  Nilai null (atau NaN) dalam user-item matrix diisi dengan 0. Hal ini dilakukan agar matrix bisa diproses dengan benar oleh algoritma.
+  
+- Menampilkan matrix rating
+
+  Matrix rating yang telah dibuat ditampilkan untuk memastikan bahwa data telah dipersiapkan dengan benar.
+
+#### Deep Learning
+- Melakukan import library yang dibutuhkan
+
+  Sama seperti sebelumnya, langkah pertama adalah mengimpor library atau modul yang dibutuhkan untuk menerapkan algoritma collaborative filtering berbasis deep learning.
+  
+- Menggabungkan dataset ratings dan movies
+- 
+  Dataset ratings dan movies digabungkan untuk menciptakan dataset yang akan digunakan dalam proses pembelajaran.
+  
+- Menampilkan dataset
+
+  Dataset yang telah digabungkan ditampilkan untuk memastikan bahwa penggabungan data telah dilakukan dengan benar.
+  
+- Melakukan proses encoding pada userId dan movieId
+
+  UserId dan movieId dienkripsi agar bisa digunakan dalam model deep learning.
+  
+- Melakukan mapping pada data
+
+  Data di-mapping untuk memperoleh jumlah user dan film serta nilai maksimum dan minimum rating.
+  
+- Mencari jumlah user dan movie serta nilai maksimum dan minimum rating
+
+  Langkah ini membantu dalam menentukan dimensi input dan output dari model deep learning.
+  
+- Melakukan teknik one-hot encoding
+
+  Teknik one-hot encoding diterapkan untuk mewakili data dalam bentuk vektor biner.
+  
+- Menentukan variabel x dan y
+
+  Variabel x dan y ditentukan untuk melatih model deep learning.
+  
+- Membagi dataset untuk training dan testing
+
+  Dataset dibagi menjadi subset training dan testing untuk melatih dan mengevaluasi model dengan perbandingan 90% untuk data training dan 10% untuk data testing.
 
 ## Modeling
 Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
