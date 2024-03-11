@@ -209,11 +209,89 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
   Dataset dibagi menjadi subset training dan testing untuk melatih dan mengevaluasi model dengan perbandingan 90% untuk data training dan 10% untuk data testing.
 
 ## Modeling
-Tahapan ini membahas mengenai model sisten rekomendasi yang Anda buat untuk menyelesaikan permasalahan. Sajikan top-N recommendation sebagai output.
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menyajikan dua solusi rekomendasi dengan algoritma yang berbeda.
-- Menjelaskan kelebihan dan kekurangan dari solusi/pendekatan yang dipilih.
+### Content-Based Filtering
+Penjelasan Model:
+- Model ini menggunakan cosine similarity untuk menghitung seberapa mirip antara film-film berdasarkan fitur genre.
+- Cosine similarity digunakan untuk menghasilkan matriks similarity antar film.
+- Fungsi get_recommendations digunakan untuk mendapatkan rekomendasi film berdasarkan similarity score.
+
+Berikut adalah top 10 rekomendasi film berdasarkan model ini:
+![image](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/cc052e34-baed-4887-b198-c019e6182d6a)
+
+Kelebihan:
+
+- Sederhana dan mudah diimplementasikan.
+- Efektif dalam merekomendasikan film berdasarkan kesamaan genre.
+
+Kekurangan:
+
+- Mengabaikan informasi selain genre dalam film, seperti rating atau ulasan pengguna.
+- Tidak memperhitungkan preferensi individu pengguna.
+
+### Collaborative Filtering
+
+#### Cluster Based Algorithm
+Penjelasan Model:
+- Model ini menggunakan algoritma KMeans untuk melakukan clustering terhadap pengguna berdasarkan preferensi mereka terhadap film.
+- Pada model ini dilakukan hyperparameter tuning menggunakan GridSearchCV untuk mencari parameter terbaik.
+- Fungsi recommend_movies_kmeans digunakan untuk merekomendasikan film berdasarkan kluster pengguna.
+
+Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak:
+|   | movieId |                       title                       |             genres             |
+|:-:|:-------:|:-------------------------------------------------:|:------------------------------:|
+| 0 |   318   |                  Shawshank Redemption, The (1994) |                   Crime\|Drama |
+| 1 |   2571  |                                Matrix, The (1999) |       Action\|Sci-Fi\|Thriller |
+| 2 |   356   |                               Forrest Gump (1994) |    Comedy\|Drama\|Romance\|War |
+| 3 |   260   |         Star Wars: Episode IV - A New Hope (1977) |      Action\|Adventure\|Sci-Fi |
+| 4 |   296   |                               Pulp Fiction (1994) | Comedy\|Crime\|Drama\|Thriller |
+| 5 |   2959  |                                 Fight Club (1999) | Action\|Crime\|Drama\|Thriller |
+| 6 |   593   |                  Silence of the Lambs, The (1991) |        Crime\|Horror\|Thriller |
+| 7 |   2858  |                            American Beauty (1999) |                 Drama\|Romance |
+| 8 |   858   |                             Godfather, The (1972) |                   Crime\|Drama |
+| 9 |   1198  | Raiders of the Lost Ark (Indiana Jones and the... |              Action\|Adventure |
+
+Kelebihan:
+
+- Memperhitungkan preferensi pengguna berdasarkan pola penilaian mereka.
+- Mampu menyesuaikan rekomendasi berdasarkan kluster pengguna.
+
+Kekurangan:
+
+- Bergantung pada kualitas clustering, bisa jadi kurang akurat jika cluster tidak merepresentasikan preferensi dengan baik.
+- Tidak memperhitungkan informasi film selain kluster pengguna.
+
+#### Deep Learning
+Penjelasan Model:
+
+- Model ini menggunakan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton oleh pengguna.
+- Pada model ini dilakukan hyperparameter tuning menggunakan RandomSearch untuk mencari parameter terbaik.
+- Fungsi recommend_movies_dl digunakan untuk merekomendasikan film berdasarkan prediksi rating.
+
+Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak:
+|   | movieId |                       title                       |             genres             |
+|:-:|:-------:|:-------------------------------------------------:|:------------------------------:|
+| 0 |   318   |                  Shawshank Redemption, The (1994) |                   Crime\|Drama |
+| 1 |   2571  |                                Matrix, The (1999) |       Action\|Sci-Fi\|Thriller |
+| 2 |   356   |                               Forrest Gump (1994) |    Comedy\|Drama\|Romance\|War |
+| 3 |   260   |         Star Wars: Episode IV - A New Hope (1977) |      Action\|Adventure\|Sci-Fi |
+| 4 |   296   |                               Pulp Fiction (1994) | Comedy\|Crime\|Drama\|Thriller |
+| 5 |   2959  |                                 Fight Club (1999) | Action\|Crime\|Drama\|Thriller |
+| 6 |   593   |                  Silence of the Lambs, The (1991) |        Crime\|Horror\|Thriller |
+| 7 |   2858  |                            American Beauty (1999) |                 Drama\|Romance |
+| 8 |   858   |                             Godfather, The (1972) |                   Crime\|Drama |
+| 9 |   1198  | Raiders of the Lost Ark (Indiana Jones and the... |              Action\|Adventure |
+
+Kelebihan:
+
+- Mampu memperhitungkan pola yang kompleks dan non-linear dalam preferensi pengguna.
+- Dapat memanfaatkan informasi lebih lanjut seperti metadata film.
+- Mampu memperbaiki rekomendasi seiring waktu dengan training ulang.
+
+Kekurangan:
+
+- Membutuhkan komputasi yang lebih intensif untuk training model.
+- Bergantung pada kualitas dan kuantitas data yang digunakan untuk training model.
 
 ## Evaluation
 Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
