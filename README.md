@@ -7,14 +7,14 @@ Dalam era digital yang terus berkembang, hiburan melalui film telah menjadi bagi
 
 ### Pentingnya Proyek
 - Meningkatkan Pengalaman Pengguna: Sistem rekomendasi dapat meningkatkan pengalaman pengguna dengan menyediakan rekomendasi yang sesuai dengan preferensi penonton.
-- Meningkatkan Retensi Pengguna: Dengan menyediakan rekomendasi yang tepat waktu dan relevan, platform streaming atau penjualan film dapat meningkatkan retensi pengguna.
+- Meningkatkan Retensi Pengguna: Dengan menyediakan rekomendasi yang tepat waktu dan relevan, platform _streaming_ atau penjualan film dapat meningkatkan retensi pengguna.
 - Pengoptimalan Konten: Produsen dan distributor film dapat menggunakan sistem rekomendasi untuk memahami tren dan preferensi pengguna, serta membantu dalam mengoptimalkan portofolio konten.
 
 ## Business Understanding
 Dalam dunia yang penuh dengan pilihan film yang tak terbatas, pengguna sering kali merasa kewalahan dalam mencari konten yang sesuai dengan preferensi pengguna. Oleh karena itu, dengan adanya kebutuhan mendesak untuk menciptakan solusi yang efisien dan efektif untuk membantu pengguna memilih film yang relevan. Melalui pemahaman terhadap kebutuhan pasar dan kemampuan teknologi, proyek ini bertujuan untuk menghadirkan pengalaman sinematik yang paling memuaskan bagi pengguna, serta mendukung pertumbuhan bisnis dan industri film secara keseluruhan.
 
 ### Problem Statements
-- Ketidakefisienan dalam Pencarian Film: Pengguna sering kali menghabiskan waktu yang berharga untuk mencari film yang sesuai dengan preferensi mereka, menyebabkan frustrasi dan penurunan kepuasan.
+- Ketidakefisienan dalam Pencarian Film: Pengguna sering kali menghabiskan waktu yang berharga untuk mencari film yang sesuai dengan preferensi mereka, menyebabkan kebingungan dan penurunan kepuasan.
 - Keterbatasan dalam Rekomendasi yang Akurat: Algoritma rekomendasi yang kurang canggih cenderung memberikan rekomendasi yang kurang relevan, mengakibatkan pengguna kehilangan minat dan potensi untuk menemukan film-film baru yang menarik.
 
 ### Goals
@@ -23,9 +23,9 @@ Dalam dunia yang penuh dengan pilihan film yang tak terbatas, pengguna sering ka
 - Meningkatkan Kepuasan Pengguna: Proyek ini juga bertujuan untuk meningkatkan kepuasan pengguna dengan menyediakan pengalaman pencarian film yang lebih efisien dan memuaskan, sehingga mengurangi kebingungan dan meningkatkan retensi pengguna.
 
 ### Solution statements
-- Content-Based Filtering dengan Cosine Similarity: Pendekatan ini bertujuan untuk membangun model yang dapat memberikan rekomendasi film berdasarkan kesamaan konten film yang disukai oleh pengguna. Dengan menganalisis atribut genre film, rekomendasi yang lebih relevan dapat diberikan.
+- _Content-Based Filtering_ dengan _Cosine Similarity_: Pendekatan ini bertujuan untuk membangun model yang dapat memberikan rekomendasi film berdasarkan kesamaan konten film yang disukai oleh pengguna. Dengan menganalisis atribut genre film, rekomendasi yang lebih relevan dapat diberikan.
 
-- Collaborative Filtering dengan Algoritma KMeans Clustering dan _Deep Learning_: Proyek ini juga membuat sistem rekomendasi dengan teknik Clustering dan _Deep Learning_. Kedua teknik ini berfungsi untuk mengidentifikasi pola-pola dalam perilaku penonton dan membuat cluster yang sesuai. Dengan demikian, pemberian rekomendasi film yang berdasarkan penilaian pengguna terhadap film-film yang tersedia dapat dilakukan, serta menerapkan algoritma yang baik untuk menghasilkan model yang memiliki kesalahan yang rendah.
+- _Collaborative Filtering_ dengan Algoritma _KMeans Clustering_ dan _Deep Learning_: Proyek ini juga membuat sistem rekomendasi dengan teknik _Clustering_ dan _Deep Learning_. Kedua teknik ini berfungsi untuk mengidentifikasi pola-pola dalam perilaku penonton dan membuat _cluster_ yang sesuai. Dengan demikian, pemberian rekomendasi film yang berdasarkan penilaian pengguna terhadap film-film yang tersedia dapat dilakukan, serta menerapkan algoritma yang baik untuk menghasilkan model yang memiliki kesalahan yang rendah.
 
 ## Data Understanding
 Terdapat dua dataset yang digunakan pada proyek ini yaitu movies.csv dan ratings.csv yang bersumber dari kaggle [Movies and Ratings](https://www.kaggle.com/datasets/nicoletacilibiu/movies-and-ratings-for-recommendation-system?select=ratings.csv).
@@ -41,12 +41,12 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
 - userId: Merupakan ID unik untuk setiap pengguna yang memberikan penilaian.
 - movieId: Merupakan ID unik untuk setiap film yang dinilai.
 - rating: Menunjukkan penilaian yang diberikan oleh pengguna terhadap film tersebut.
-- timestamp: Merupakan timestamp ketika penilaian diberikan.
+- timestamp: Merupakan waktu ketika penilaian diberikan.
 
 ### Exploratory Data Analysis (EDA)
-- Menampilkan dataset movies
+- Menampilkan dataset "movies"
   
-  Langkah pertama adalah memuat dataset movies.csv yang berisi informasi tentang film-film beserta genre film tersebut. Dataset kemudian ditampilkan untuk memeriksa struktur dan konten awalnya.
+  Langkah pertama adalah memuat dataset ini yang berisi informasi tentang film-film beserta genre film tersebut. Dataset kemudian ditampilkan untuk memeriksa struktur dan konten awalnya.
   
   |      | movieId |                   title                   |                      genres                     |
   |:----:|:-------:|:-----------------------------------------:|:-----------------------------------------------:|
@@ -62,9 +62,9 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
   | 9740 |  193587 |       Bungo Stray Dogs: Dead Apple (2018) |                               Action\|Animation |
   | 9741 |  193609 |       Andrew Dice Clay: Dice Rules (1991) |                                          Comedy |
 
-- Menghitung jumlah film pada dataset movies
+- Menghitung jumlah film pada dataset "movies"
   
-  Setelah dataset movies ditampilkan, langkah selanjutnya adalah menghitung jumlah film yang terdapat dalam dataset tersebut. Hal ini membantu dalam memahami ukuran dataset film yang dimiliki. Jumlah film pada dataset movies adalah 9742.
+  Setelah dataset ditampilkan, langkah selanjutnya adalah menghitung jumlah film yang terdapat dalam dataset tersebut. Hal ini membantu dalam memahami ukuran dataset film yang dimiliki. Jumlah film pada dataset "movies" adalah 9742.
  
 - Melakukan visualisasi jumlah film per genre
   
@@ -72,9 +72,9 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
 ![jumlah film per genre](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/ceaeef38-91f4-4383-9c00-6a9f1e407ec2)
 
   
-- Menampilkan dataset ratings
+- Menampilkan dataset "ratings"
   
-  Dataset ratings.csv yang berisi informasi tentang penilaian user terhadap film-film dimuat. Dataset ini ditampilkan untuk memeriksa struktur dan konten awalnya.
+  Dataset ini yang berisi informasi tentang penilaian user terhadap film-film dimuat. Dataset ini ditampilkan untuk memeriksa struktur dan konten awalnya.
   |        | userId | movieId | rating |  timestamp |
   |:------:|:------:|:-------:|:------:|:----------:|
   |      0 |      1 |       1 |    4.0 |  964982703 |
@@ -91,11 +91,11 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
 
 - Menghitung jumlah user dan film pada dataset ratings
   
-  Setelah dataset ratings ditampilkan, langkah berikutnya adalah menghitung jumlah pengguna unik (user) dan jumlah film unik yang ada dalam dataset tersebut. Informasi ini penting untuk memahami cakupan data yang dimiliki. Jumlah pengguna unik adalah 610 dan jumlah film unik adalah 9724.
+  Setelah dataset "ratings" ditampilkan, langkah berikutnya adalah menghitung jumlah pengguna unik (user) dan jumlah film unik yang ada dalam dataset tersebut. Informasi ini penting untuk memahami cakupan data yang dimiliki. Jumlah pengguna unik adalah 610 dan jumlah film unik adalah 9724.
   
 - Menampilkan ringkasan statistik dataset ratings
   
-  Statistik deskriptif seperti rata-rata, median, dan kuartil dihitung untuk dataset ratings. Ini membantu dalam memahami distribusi rating yang diberikan oleh pengguna.
+  Statistik deskriptif seperti rata-rata, median, dan kuartil dihitung untuk dataset "ratings". Ini membantu dalam memahami distribusi rating yang diberikan oleh pengguna.
   
   |        | userId | movieId | rating |  timestamp |
   |:------:|:------:|:-------:|:------:|:----------:|
@@ -124,13 +124,13 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
 ## Data Preparation
 
 ### Content-Based Filtering
-- Menyalin dataset movies
+- Menyalin dataset "movies"
 
-  Langkah pertama adalah menyalin dataset movies. Hal ini bertujuan untuk mempertahankan dataset asli dan mencegah perubahan yang tidak disengaja.
+  Langkah pertama adalah menyalin dataset "movies". Hal ini bertujuan untuk mempertahankan dataset asli dan mencegah perubahan yang tidak disengaja.
   
 - Membuat kolom baru berdasarkan genre
 
-  Kolom baru dibuat berdasarkan genre yang terdapat dalam dataset. Hal ini penting karena content-based filtering menggunakan informasi tentang konten (misalnya, genre film) untuk membuat rekomendasi.
+  Kolom baru dibuat berdasarkan genre yang terdapat dalam dataset. Hal ini penting karena _content-based filtering_ menggunakan informasi tentang konten (misalnya, genre film) untuk membuat rekomendasi.
   
 - Menghapus baris yang tidak memiliki genre
 
@@ -142,7 +142,7 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
   
 - Menghapus kolom yang tidak diperlukan
 
-  Kolom-kolom yang tidak diperlukan untuk proses content-based filtering dihapus. Hal ini bertujuan untuk membantu mengurangi dimensi data dan mempercepat proses komputasi.
+  Kolom-kolom yang tidak diperlukan untuk proses _content-based filtering_ dihapus. Hal ini bertujuan untuk membantu mengurangi dimensi data dan mempercepat proses komputasi.
   
 - Menampilkan kolom pada data
 
@@ -151,70 +151,70 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
 ### Collaborative Filtering
 
 #### Cluster Based Algorithm
-- Melakukan import library yang dibutuhkan
+- Mengimpor librari yang dibutuhkan
 
-  Langkah pertama adalah mengimpor library atau modul yang dibutuhkan untuk menerapkan algoritma collaborative filtering berbasis cluster.
+  Langkah pertama adalah mengimpor librari atau modul yang dibutuhkan untuk menerapkan algoritma collaborative filtering berbasis cluster.
   
-- Menggabungkan dataset ratings dan movies
+- Menggabungkan dataset "ratings" dan "movies"
 
-  Dataset ratings dan movies digabungkan untuk membuat user-item matrix yang akan digunakan dalam proses rekomendasi.
+  Dataset "ratings" dan "movies" digabungkan untuk membuat _user-item matrix_ yang akan digunakan dalam proses rekomendasi.
   
-- Membuat pivot table untuk user-item
+- Membuat pivot tabel untuk _user-item_
 
-  Pivot table dibuat dengan menggunakan dataset gabungan untuk menyusun user-item matrix, yang merupakan dasar dari algoritma collaborative filtering.
+  Pivot tabel dibuat dengan menggunakan dataset gabungan untuk menyusun _user-item matrix_, yang merupakan dasar dari algoritma _collaborative filtering_.
   
 - Mengisi nilai null dengan 0
   
-  Nilai null (atau NaN) dalam user-item matrix diisi dengan 0. Hal ini dilakukan agar matrix bisa diproses dengan benar oleh algoritma.
+  Nilai null (atau NaN) dalam _user-item matrix_ diisi dengan 0. Hal ini dilakukan agar matrix bisa diproses dengan benar oleh algoritma.
   
 - Menampilkan matrix rating
 
   Matrix rating yang telah dibuat ditampilkan untuk memastikan bahwa data telah dipersiapkan dengan benar.
 
-#### _Deep Learning_
-- Melakukan import library yang dibutuhkan
+#### Deep Learning
+- Mengimpor librari yang dibutuhkan
 
-  Sama seperti sebelumnya, langkah pertama adalah mengimpor library atau modul yang dibutuhkan untuk menerapkan algoritma collaborative filtering berbasis _Deep Learning_.
+  Sama seperti sebelumnya, langkah pertama adalah mengimpor librari atau modul yang dibutuhkan untuk menerapkan algoritma _collaborative filtering_ berbasis _Deep Learning_.
   
-- Menggabungkan dataset ratings dan movies
+- Menggabungkan dataset "ratings" dan "movies"
 - 
-  Dataset ratings dan movies digabungkan untuk menciptakan dataset yang akan digunakan dalam proses pembelajaran.
+  Dataset "ratings" dan "movies" digabungkan untuk menciptakan dataset yang akan digunakan dalam proses pembelajaran.
   
 - Menampilkan dataset
 
   Dataset yang telah digabungkan ditampilkan untuk memastikan bahwa penggabungan data telah dilakukan dengan benar.
   
-- Melakukan proses encoding pada userId dan movieId
+- Melakukan proses _encoding_ pada userId dan movieId
 
   UserId dan movieId dienkripsi agar bisa digunakan dalam model _Deep Learning_.
   
-- Melakukan mapping pada data
+- Melakukan _mapping_ pada data
 
-  Data di-mapping untuk memperoleh jumlah user dan film serta nilai maksimum dan minimum rating.
+  Melakukan _mapping_ pada data untuk memperoleh jumlah user dan film serta nilai maksimum dan minimum rating.
   
-- Mencari jumlah user dan movie serta nilai maksimum dan minimum rating
+- Mencari jumlah pengguna dan film serta nilai maksimum dan minimum rating
 
   Langkah ini membantu dalam menentukan dimensi input dan output dari model _Deep Learning_.
   
-- Melakukan teknik one-hot encoding
+- Melakukan teknik _one-hot encoding_
 
-  Teknik one-hot encoding diterapkan untuk mewakili data dalam bentuk vektor biner.
+  Teknik _one-hot encoding_ diterapkan untuk mewakili data dalam bentuk vektor biner.
   
 - Menentukan variabel x dan y
 
   Variabel x dan y ditentukan untuk melatih model _Deep Learning_.
   
-- Membagi dataset untuk training dan testing
+- Membagi dataset untuk _training_ dan _testing_
 
-  Dataset dibagi menjadi subset training dan testing untuk melatih dan mengevaluasi model dengan perbandingan 90% untuk data training dan 10% untuk data testing.
+  Dataset dibagi menjadi subset _training_ dan _testing_ untuk melatih dan mengevaluasi model dengan perbandingan 90% untuk data _training_ dan 10% untuk data _testing_.
 
 ## Modeling
 
 ### Content-Based Filtering
 Penjelasan Model:
-- Model ini menggunakan cosine similarity untuk menghitung seberapa mirip antara film-film berdasarkan fitur genre.
-- Cosine similarity digunakan untuk menghasilkan matriks similarity antar film.
-- Fungsi get_recommendations digunakan untuk mendapatkan rekomendasi film berdasarkan similarity score.
+- Model ini menggunakan _cosine similarity_ untuk menghitung seberapa mirip antara film-film berdasarkan fitur genre.
+- _Cosine similarity_ digunakan untuk menghasilkan matriks _similarity_ antar film.
+- Fungsi "get_recommendations" digunakan untuk mendapatkan rekomendasi film berdasarkan _similarity score_.
 
 Berikut adalah top 10 rekomendasi film berdasarkan model ini:
 ![image](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/cc052e34-baed-4887-b198-c019e6182d6a)
@@ -233,9 +233,9 @@ Kekurangan:
 
 #### Cluster Based Algorithm
 Penjelasan Model:
-- Model ini menggunakan algoritma KMeans untuk melakukan clustering terhadap pengguna berdasarkan preferensi mereka terhadap film.
-- Pada model ini dilakukan hyperparameter tuning menggunakan GridSearchCV untuk mencari parameter terbaik.
-- Fungsi recommend_movies_kmeans digunakan untuk merekomendasikan film berdasarkan kluster pengguna.
+- Model ini menggunakan algoritma _KMeans_ untuk melakukan _clustering_ terhadap pengguna berdasarkan preferensi mereka terhadap film.
+- Pada model ini dilakukan _hyperparameter tuning_ menggunakan _GridSearchCV_ untuk mencari parameter terbaik.
+- Fungsi "recommend_movies_kmeans" digunakan untuk merekomendasikan film berdasarkan kluster pengguna.
 
 Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak:
 |   | movieId |                       title                       |             genres             |
@@ -258,15 +258,15 @@ Kelebihan:
 
 Kekurangan:
 
-- Bergantung pada kualitas clustering, bisa jadi kurang akurat jika cluster tidak merepresentasikan preferensi dengan baik.
+- Bergantung pada kualitas "clustering", bisa jadi kurang akurat jika kluster tidak merepresentasikan preferensi dengan baik.
 - Tidak memperhitungkan informasi film selain kluster pengguna.
 
 #### _Deep Learning_
 Penjelasan Model:
 
 - Model ini menggunakan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton oleh pengguna.
-- Pada model ini dilakukan hyperparameter tuning menggunakan RandomSearch untuk mencari parameter terbaik.
-- Fungsi recommend_movies_dl digunakan untuk merekomendasikan film berdasarkan prediksi rating.
+- Pada model ini dilakukan _hyperparameter tuning_ menggunakan _RandomSearch_ untuk mencari parameter terbaik.
+- Fungsi "recommend_movies_dl" digunakan untuk merekomendasikan film berdasarkan prediksi rating.
 
 Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak:
 |   | movieId |                       title                       |             genres             |
@@ -284,14 +284,14 @@ Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak
 
 Kelebihan:
 
-- Mampu memperhitungkan pola yang kompleks dan non-linear dalam preferensi pengguna.
+- Mampu memperhitungkan pola yang kompleks dan _non-linear_ dalam preferensi pengguna.
 - Dapat memanfaatkan informasi lebih lanjut seperti metadata film.
-- Mampu memperbaiki rekomendasi seiring waktu dengan training ulang.
+- Mampu memperbaiki rekomendasi seiring waktu dengan _training_ ulang.
 
 Kekurangan:
 
-- Membutuhkan komputasi yang lebih intensif untuk training model.
-- Bergantung pada kualitas dan kuantitas data yang digunakan untuk training model.
+- Membutuhkan komputasi yang lebih intensif untuk _training_ model.
+- Bergantung pada kualitas dan kuantitas data yang digunakan untuk _training_ model.
 
 ## Evaluation
 
@@ -311,14 +311,14 @@ _Mean Squared Error_ adalah metrik yang digunakan untuk mengukur seberapa dekat 
     Ŷ : nilai yang diprediksi untuk sampel ke-i
 
 - _Root Mean Squared Error (RMSE)_ :
-_Root Mean Squared Error_ adalah akar kuadrat dari MSE. Ini memberikan ukuran kesalahan rata-rata antara nilai yang diprediksi dan nilai yang sebenarnya dalam satuan yang sama dengan variabel target. Metrik ini digunakan pada model pertama saja. _RMSE_ dihitung dengan cara berikut :
+_Root Mean Squared Error_ adalah akar kuadrat dari _MSE_. Ini memberikan ukuran kesalahan rata-rata antara nilai yang diprediksi dan nilai yang sebenarnya dalam satuan yang sama dengan variabel target. Metrik ini digunakan pada model pertama saja. _RMSE_ dihitung dengan cara berikut :
 
   _RMSE_ = $\sqrt{MSE}$
 
 ### Model Evaluation
 
-- KMeans CLustering
-Pada model dengan pendekatan Clustering menghasilkan nilai kesalahan sebagai berikut :
+- _KMeans CLustering_
+Pada model dengan pendekatan _Clustering_ menghasilkan nilai kesalahan sebagai berikut :
     - _MSE_ : 0.05743065031937357
     - _RMSE_ : 0.2396469284580413
  
@@ -335,12 +335,12 @@ Pada model dengan pendekatan _Deep Learning_ menghasilkan nilai kesalahan sebaga
 - Meningkatkan Kepuasan Pengguna: Proyek ini juga berhasil meningkatkan kepuasan pengguna dengan menyediakan pengalaman pencarian film yang lebih efisien dan memuaskan, sehingga mengurangi kebingungan dan meningkatkan retensi pengguna.
 
 #### Solusi Efektif
-- Content-Based Filtering dengan Cosine Similarity: Pendekatan ini terbukti efektif dalam merekomendasikan film berdasarkan kesamaan genre. Meskipun sederhana, model ini memberikan rekomendasi yang relevan berdasarkan informasi genre film.
-- Collaborative Filtering dengan Algoritma KMeans Clustering dan _Deep Learning_: Kedua pendekatan ini juga berhasil dalam memberikan rekomendasi film. Pendekatan KMeans Clustering mengelompokkan pengguna berdasarkan preferensi mereka, sementara pendekatan _Deep Learning_ memanfaatkan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton.
+- _Content-Based Filtering_ dengan _Cosine Similarity_: Pendekatan ini terbukti efektif dalam merekomendasikan film berdasarkan kesamaan genre. Meskipun sederhana, model ini memberikan rekomendasi yang relevan berdasarkan informasi genre film.
+- _Collaborative Filtering_ dengan Algoritma _KMeans Clustering_ dan _Deep Learning_: Kedua pendekatan ini juga berhasil dalam memberikan rekomendasi film. Pendekatan _KMeans Clustering_ mengelompokkan pengguna berdasarkan preferensi mereka, sementara pendekatan _Deep Learning_ memanfaatkan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton.
 
 #### Perluasan Penelitian
 - Inklusi Informasi Tambahan: Untuk meningkatkan akurasi rekomendasi, penelitian selanjutnya dapat mempertimbangkan inklusi informasi tambahan seperti metadata film, ulasan pengguna, atau faktor-faktor lain yang dapat mempengaruhi preferensi pengguna.
-- Eksplorasi Model Lain: Selain pendekatan yang telah digunakan, penelitian dapat mengeksplorasi model lain seperti collaborative filtering berbasis model, ensemble methods, atau teknik hybrid untuk meningkatkan kualitas rekomendasi.
+- Eksplorasi Model Lain: Selain pendekatan yang telah digunakan, penelitian dapat mengeksplorasi model lain seperti _ensemble methods_, atau teknik _hybrid_ untuk meningkatkan kualitas rekomendasi.
 - Optimisasi Komputasi: Mengingat _Deep Learning_ membutuhkan komputasi yang intensif, penelitian dapat fokus pada optimisasi komputasi untuk meningkatkan efisiensi dan kinerja model.
 
 ## References
