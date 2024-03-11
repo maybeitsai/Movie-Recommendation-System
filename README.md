@@ -25,7 +25,7 @@ Dalam dunia yang penuh dengan pilihan film yang tak terbatas, pengguna sering ka
 ### Solution statements
 - Content-Based Filtering dengan Cosine Similarity: Pendekatan ini bertujuan untuk membangun model yang dapat memberikan rekomendasi film berdasarkan kesamaan konten film yang disukai oleh pengguna. Dengan menganalisis atribut genre film, rekomendasi yang lebih relevan dapat diberikan.
 
-- Collaborative Filtering dengan Algoritma KMeans Clustering dan Deep Learning: Proyek ini juga membuat sistem rekomendasi dengan teknik Clustering dan Deep Learning. Kedua teknik ini berfungsi untuk mengidentifikasi pola-pola dalam perilaku penonton dan membuat cluster yang sesuai. Dengan demikian, pemberian rekomendasi film yang berdasarkan penilaian pengguna terhadap film-film yang tersedia dapat dilakukan, serta menerapkan algoritma yang baik untuk menghasilkan model yang memiliki kesalahan yang rendah.
+- Collaborative Filtering dengan Algoritma KMeans Clustering dan _Deep Learning_: Proyek ini juga membuat sistem rekomendasi dengan teknik Clustering dan _Deep Learning_. Kedua teknik ini berfungsi untuk mengidentifikasi pola-pola dalam perilaku penonton dan membuat cluster yang sesuai. Dengan demikian, pemberian rekomendasi film yang berdasarkan penilaian pengguna terhadap film-film yang tersedia dapat dilakukan, serta menerapkan algoritma yang baik untuk menghasilkan model yang memiliki kesalahan yang rendah.
 
 ## Data Understanding
 Terdapat dua dataset yang digunakan pada proyek ini yaitu movies.csv dan ratings.csv yang bersumber dari kaggle [Movies and Ratings](https://www.kaggle.com/datasets/nicoletacilibiu/movies-and-ratings-for-recommendation-system?select=ratings.csv).
@@ -171,10 +171,10 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
 
   Matrix rating yang telah dibuat ditampilkan untuk memastikan bahwa data telah dipersiapkan dengan benar.
 
-#### Deep Learning
+#### _Deep Learning_
 - Melakukan import library yang dibutuhkan
 
-  Sama seperti sebelumnya, langkah pertama adalah mengimpor library atau modul yang dibutuhkan untuk menerapkan algoritma collaborative filtering berbasis deep learning.
+  Sama seperti sebelumnya, langkah pertama adalah mengimpor library atau modul yang dibutuhkan untuk menerapkan algoritma collaborative filtering berbasis _Deep Learning_.
   
 - Menggabungkan dataset ratings dan movies
 - 
@@ -186,7 +186,7 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
   
 - Melakukan proses encoding pada userId dan movieId
 
-  UserId dan movieId dienkripsi agar bisa digunakan dalam model deep learning.
+  UserId dan movieId dienkripsi agar bisa digunakan dalam model _Deep Learning_.
   
 - Melakukan mapping pada data
 
@@ -194,7 +194,7 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
   
 - Mencari jumlah user dan movie serta nilai maksimum dan minimum rating
 
-  Langkah ini membantu dalam menentukan dimensi input dan output dari model deep learning.
+  Langkah ini membantu dalam menentukan dimensi input dan output dari model _Deep Learning_.
   
 - Melakukan teknik one-hot encoding
 
@@ -202,7 +202,7 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
   
 - Menentukan variabel x dan y
 
-  Variabel x dan y ditentukan untuk melatih model deep learning.
+  Variabel x dan y ditentukan untuk melatih model _Deep Learning_.
   
 - Membagi dataset untuk training dan testing
 
@@ -261,7 +261,7 @@ Kekurangan:
 - Bergantung pada kualitas clustering, bisa jadi kurang akurat jika cluster tidak merepresentasikan preferensi dengan baik.
 - Tidak memperhitungkan informasi film selain kluster pengguna.
 
-#### Deep Learning
+#### _Deep Learning_
 Penjelasan Model:
 
 - Model ini menggunakan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton oleh pengguna.
@@ -322,8 +322,8 @@ Pada model dengan pendekatan Clustering menghasilkan nilai kesalahan sebagai ber
     - _MSE_ : 0.05743065031937357
     - _RMSE_ : 0.2396469284580413
  
-- Deep Learning
-Pada model dengan pendekatan Deep Learning menghasilkan nilai kesalahan sebagai berikut :
+- _Deep Learning_
+Pada model dengan pendekatan _Deep Learning_ menghasilkan nilai kesalahan sebagai berikut :
     - _MSE_ : 0.0102
     - _Validation MSE_ : 0.0384
     - _RMSE_ : 0.1008
@@ -336,12 +336,12 @@ Pada model dengan pendekatan Deep Learning menghasilkan nilai kesalahan sebagai 
 
 #### Solusi Efektif
 - Content-Based Filtering dengan Cosine Similarity: Pendekatan ini terbukti efektif dalam merekomendasikan film berdasarkan kesamaan genre. Meskipun sederhana, model ini memberikan rekomendasi yang relevan berdasarkan informasi genre film.
-- Collaborative Filtering dengan Algoritma KMeans Clustering dan Deep Learning: Kedua pendekatan ini juga berhasil dalam memberikan rekomendasi film. Pendekatan KMeans Clustering mengelompokkan pengguna berdasarkan preferensi mereka, sementara pendekatan Deep Learning memanfaatkan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton.
+- Collaborative Filtering dengan Algoritma KMeans Clustering dan _Deep Learning_: Kedua pendekatan ini juga berhasil dalam memberikan rekomendasi film. Pendekatan KMeans Clustering mengelompokkan pengguna berdasarkan preferensi mereka, sementara pendekatan _Deep Learning_ memanfaatkan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton.
 
 #### Perluasan Penelitian
 - Inklusi Informasi Tambahan: Untuk meningkatkan akurasi rekomendasi, penelitian selanjutnya dapat mempertimbangkan inklusi informasi tambahan seperti metadata film, ulasan pengguna, atau faktor-faktor lain yang dapat mempengaruhi preferensi pengguna.
 - Eksplorasi Model Lain: Selain pendekatan yang telah digunakan, penelitian dapat mengeksplorasi model lain seperti collaborative filtering berbasis model, ensemble methods, atau teknik hybrid untuk meningkatkan kualitas rekomendasi.
-- Optimisasi Komputasi: Mengingat deep learning membutuhkan komputasi yang intensif, penelitian dapat fokus pada optimisasi komputasi untuk meningkatkan efisiensi dan kinerja model.
+- Optimisasi Komputasi: Mengingat _Deep Learning_ membutuhkan komputasi yang intensif, penelitian dapat fokus pada optimisasi komputasi untuk meningkatkan efisiensi dan kinerja model.
 
 ## References
 
