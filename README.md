@@ -294,15 +294,54 @@ Kekurangan:
 - Bergantung pada kualitas dan kuantitas data yang digunakan untuk training model.
 
 ## Evaluation
-Pada bagian ini Anda perlu menyebutkan metrik evaluasi yang digunakan. Kemudian, jelaskan hasil proyek berdasarkan metrik evaluasi tersebut.
 
-Ingatlah, metrik evaluasi yang digunakan harus sesuai dengan konteks data, problem statement, dan solusi yang diinginkan.
+### Metrik
 
-**Rubrik/Kriteria Tambahan (Opsional)**: 
-- Menjelaskan formula metrik dan bagaimana metrik tersebut bekerja.
+- _Mean Squared Error (MSE)_ :
+_Mean Squared Error_ adalah metrik yang digunakan untuk mengukur seberapa dekat rata-rata kuadrat dari selisih antara nilai yang diprediksi dan nilai yang sebenarnya dari data sampel. Metrik ini digunakan pada model pertama dan kedua. Formula untuk _MSE_ adalah sebagai berikut :
 
-**---Ini adalah bagian akhir laporan---**
+  _MSE_ = $\frac{1}{n} \Sigma_{i=1}^n({y}-\hat{y})^2$
 
-_Catatan:_
-- _Anda dapat menambahkan gambar, kode, atau tabel ke dalam laporan jika diperlukan. Temukan caranya pada contoh dokumen markdown di situs editor [Dillinger](https://dillinger.io/), [Github Guides: Mastering markdown](https://guides.github.com/features/mastering-markdown/), atau sumber lain di internet. Semangat!_
-- Jika terdapat penjelasan yang harus menyertakan code snippet, tuliskan dengan sewajarnya. Tidak perlu menuliskan keseluruhan kode project, cukup bagian yang ingin dijelaskan saja.
+  Keterangan :
+
+    n : jumlah sampel
+
+    Y : nilai sebenarnya dari sampel ke-i
+
+    Ŷ : nilai yang diprediksi untuk sampel ke-i
+
+- _Root Mean Squared Error (RMSE)_ :
+_Root Mean Squared Error_ adalah akar kuadrat dari MSE. Ini memberikan ukuran kesalahan rata-rata antara nilai yang diprediksi dan nilai yang sebenarnya dalam satuan yang sama dengan variabel target. Metrik ini digunakan pada model pertama saja. _RMSE_ dihitung dengan cara berikut :
+
+  _RMSE_ = $\sqrt{MSE}$
+
+### Model Evaluation
+
+- KMeans CLustering
+Pada model dengan pendekatan Clustering menghasilkan nilai kesalahan sebagai berikut :
+    - _MSE_ : 0.05743065031937357
+    - _RMSE_ : 0.2396469284580413
+ 
+- Deep Learning
+Pada model dengan pendekatan Deep Learning menghasilkan nilai kesalahan sebagai berikut :
+    - _MSE_ : 0.0102
+    - _Validation MSE_ : 0.0384
+    - _RMSE_ : 0.1008
+    - _Validation RMSE_ : 0.1960
+
+### Kesimpulan
+#### Goals Achievement
+- Menghasilkan Rekomendasi Film yang Relevan: Kesimpulan ini mencakup pencapaian utama dari proyek, yaitu pengembangan sistem rekomendasi film yang dapat menganalisis preferensi pengguna dengan mendalam dan memberikan rekomendasi film yang sesuai dengan tingkat kesalahan yang rendah.
+- Meningkatkan Kepuasan Pengguna: Proyek ini juga berhasil meningkatkan kepuasan pengguna dengan menyediakan pengalaman pencarian film yang lebih efisien dan memuaskan, sehingga mengurangi kebingungan dan meningkatkan retensi pengguna.
+
+#### Solusi Efektif
+- Content-Based Filtering dengan Cosine Similarity: Pendekatan ini terbukti efektif dalam merekomendasikan film berdasarkan kesamaan genre. Meskipun sederhana, model ini memberikan rekomendasi yang relevan berdasarkan informasi genre film.
+- Collaborative Filtering dengan Algoritma KMeans Clustering dan Deep Learning: Kedua pendekatan ini juga berhasil dalam memberikan rekomendasi film. Pendekatan KMeans Clustering mengelompokkan pengguna berdasarkan preferensi mereka, sementara pendekatan Deep Learning memanfaatkan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton.
+
+#### Perluasan Penelitian
+- Inklusi Informasi Tambahan: Untuk meningkatkan akurasi rekomendasi, penelitian selanjutnya dapat mempertimbangkan inklusi informasi tambahan seperti metadata film, ulasan pengguna, atau faktor-faktor lain yang dapat mempengaruhi preferensi pengguna.
+- Eksplorasi Model Lain: Selain pendekatan yang telah digunakan, penelitian dapat mengeksplorasi model lain seperti collaborative filtering berbasis model, ensemble methods, atau teknik hybrid untuk meningkatkan kualitas rekomendasi.
+- Optimisasi Komputasi: Mengingat deep learning membutuhkan komputasi yang intensif, penelitian dapat fokus pada optimisasi komputasi untuk meningkatkan efisiensi dan kinerja model.
+
+## References
+
