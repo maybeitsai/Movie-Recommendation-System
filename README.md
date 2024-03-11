@@ -14,8 +14,8 @@ Dalam era digital yang terus berkembang, hiburan melalui film telah menjadi bagi
 Dalam dunia yang penuh dengan pilihan film yang tak terbatas, pengguna sering kali merasa kewalahan dalam mencari konten yang sesuai dengan preferensi pengguna. Oleh karena itu, dengan adanya kebutuhan mendesak untuk menciptakan solusi yang efisien dan efektif untuk membantu pengguna memilih film yang relevan. Melalui pemahaman terhadap kebutuhan pasar dan kemampuan teknologi, proyek ini bertujuan untuk menghadirkan pengalaman sinematik yang paling memuaskan bagi pengguna, serta mendukung pertumbuhan bisnis dan industri film secara keseluruhan.
 
 ### Problem Statements
-- Kepuasan Pengguna Terhadap Pencarian Film: Pengguna sering merasa kebingungan dan kehilangan arah saat mencari film baru untuk ditonton. Pengguna membutuhkan solusi yang dapat memberikan rekomendasi film yang sesuai dengan preferensi pengguna dengan cepat dan akurat.
-- Meningkatkan Retensi dan Loyalitas Pengguna: Tingkat retensi dan loyalitas pengguna merupakan faktor kunci dalam keberhasilan platform penyedia film. Oleh karena itu, perlu adanya peningkatan pengalaman pengguna sehingga pengguna merasa terhubung secara emosional dengan platform dan merasa loyal dengan platform.
+- Ketidakefisienan dalam Pencarian Film: Pengguna sering kali menghabiskan waktu yang berharga untuk mencari film yang sesuai dengan preferensi mereka, menyebabkan frustrasi dan penurunan kepuasan.
+- Keterbatasan dalam Rekomendasi yang Akurat: Algoritma rekomendasi yang kurang canggih cenderung memberikan rekomendasi yang kurang relevan, mengakibatkan pengguna kehilangan minat dan potensi untuk menemukan film-film baru yang menarik.
 
 ### Goals
 - Menghasilkan Rekomendasi Film yang relevan: Tujuan utama proyek ini adalah mengembangkan sistem rekomendasi yang dapat menganalisis preferensi pengguna dengan mendalam dan memberikan rekomendasi film yang sesuai dengan preferensi pengguna dengan tingkat kesalahan yang rendah.
@@ -25,20 +25,101 @@ Dalam dunia yang penuh dengan pilihan film yang tak terbatas, pengguna sering ka
 ### Solution statements
 - Content-Based Filtering dengan Cosine Similarity: Pendekatan ini bertujuan untuk membangun model yang dapat memberikan rekomendasi film berdasarkan kesamaan konten film yang disukai oleh pengguna. Dengan menganalisis atribut genre film, rekomendasi yang lebih relevan dapat diberikan.
 
-- Collaborative Filtering dengan Algoritma KMeans Clustering dan Deep Learning: Proyek ini juga membuat sistem rekomendasi dengan teknik Clustering dan Deep Learning. Kedua teknik ini berfungsi untuk mengidentifikasi pola-pola dalam perilaku penonton dan membuat cluster yang sesuai. Dengan demikian, kami dapat memberikan rekomendasi film yang berdasarkan penilaian pengguna terhadap film-film yang tersediia, serta menerapkan algoritma yang baik untuk menghasilkan model yang memiliki kesalahan yang rendah sehingga dapat membandingkan antara penggunaan algoritma KMeans dan Deep Learning.
+- Collaborative Filtering dengan Algoritma KMeans Clustering dan Deep Learning: Proyek ini juga membuat sistem rekomendasi dengan teknik Clustering dan Deep Learning. Kedua teknik ini berfungsi untuk mengidentifikasi pola-pola dalam perilaku penonton dan membuat cluster yang sesuai. Dengan demikian, pemberian rekomendasi film yang berdasarkan penilaian pengguna terhadap film-film yang tersedia dapat dilakukan, serta menerapkan algoritma yang baik untuk menghasilkan model yang memiliki kesalahan yang rendah.
 
 ## Data Understanding
-Paragraf awal bagian ini menjelaskan informasi mengenai jumlah data, kondisi data, dan informasi mengenai data yang digunakan. Sertakan juga sumber atau tautan untuk mengunduh dataset. Contoh: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Restaurant+%26+consumer+data).
+Terdapat dua dataset yang digunakan pada proyek ini yaitu movies.csv dan ratings.csv yang bersumber dari kaggle [Movies and Ratings](https://www.kaggle.com/datasets/nicoletacilibiu/movies-and-ratings-for-recommendation-system?select=ratings.csv).
+### movies.csv
+Dataset movies.csv merupakan kumpulan data tentang film-film beserta genre-genre yang dimilikinya. Dataset ini membantu dalam pemahaman tentang katalog film yang tersedia, serta genre-genre yang populer atau yang umumnya dipilih. Dataset ini terdiri dari 9742 baris dan 3 kolom. Kolom-kolom tersebut adalah sebagai berikut:
 
-Selanjutnya, uraikanlah seluruh variabel atau fitur pada data. Sebagai contoh:  
+- movieId: Merupakan ID unik untuk setiap film dalam dataset. Ini dapat digunakan sebagai kunci untuk menghubungkan data dengan dataset lainnya.
+- title: Menyajikan judul film.
+- genres: Merupakan genre-genre yang terkait dengan film tersebut.
 
-Variabel-variabel pada Restaurant UCI dataset adalah sebagai berikut:
-- accepts : merupakan jenis pembayaran yang diterima pada restoran tertentu.
-- cuisine : merupakan jenis masakan yang disajikan pada restoran.
-- dst
+### ratings.csv
+Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengguna terhadap film-film tertentu. Dataset ini memberikan wawasan tentang preferensi pengguna terhadap film-film tertentu. Dataset ini terdiri dari 100836 baris dan 4 kolom. Kolom-kolom tersebut adalah sebagai berikut:
+- userId: Merupakan ID unik untuk setiap pengguna yang memberikan penilaian.
+- movieId: Merupakan ID unik untuk setiap film yang dinilai.
+- rating: Menunjukkan penilaian yang diberikan oleh pengguna terhadap film tersebut.
+- timestamp: Merupakan timestamp ketika penilaian diberikan.
 
-**Rubrik/Kriteria Tambahan (Opsional)**:
-- Melakukan beberapa tahapan yang diperlukan untuk memahami data, contohnya teknik visualisasi data beserta insight atau exploratory data analysis.
+### Exploratory Data Analysis (EDA)
+- Menampilkan dataset movies
+  
+  Langkah pertama adalah memuat dataset movies.csv yang berisi informasi tentang film-film beserta genre film tersebut. Dataset kemudian ditampilkan untuk memeriksa struktur dan konten awalnya.
+  
+  |      | movieId |                   title                   |                      genres                     |
+  |:----:|:-------:|:-----------------------------------------:|:-----------------------------------------------:|
+  |   0  |    1    |                          Toy Story (1995) | Adventure\|Animation\|Children\|Comedy\|Fantasy |
+  |   1  |    2    |                            Jumanji (1995) |                    Adventure\|Children\|Fantasy |
+  |   2  |    3    |                   Grumpier Old Men (1995) |                                 Comedy\|Romance |
+  |   3  |    4    |                  Waiting to Exhale (1995) |                          Comedy\|Drama\|Romance |
+  |   4  |    5    |        Father of the Bride Part II (1995) |                                          Comedy |
+  |  ... |   ...   |                                       ... |                                             ... |
+  | 9737 |  193581 | Black Butler: Book of the Atlantic (2017) |              Action\|Animation\|Comedy\|Fantasy |
+  | 9738 |  193583 |              No Game No Life: Zero (2017) |                      Animation\|Comedy\|Fantasy |
+  | 9739 |  193585 |                              Flint (2017) |                                           Drama |
+  | 9740 |  193587 |       Bungo Stray Dogs: Dead Apple (2018) |                               Action\|Animation |
+  | 9741 |  193609 |       Andrew Dice Clay: Dice Rules (1991) |                                          Comedy |
+
+- Menghitung jumlah film pada dataset movies
+  
+  Setelah dataset movies ditampilkan, langkah selanjutnya adalah menghitung jumlah film yang terdapat dalam dataset tersebut. Hal ini membantu dalam memahami ukuran dataset film yang dimiliki. Jumlah film pada dataset movies adalah 9742.
+ 
+- Melakukan visualisasi jumlah film per genre
+  
+  Visualisasi digunakan untuk menampilkan jumlah film yang termasuk dalam setiap genre. Hal ini memberikan gambaran visual tentang sebaran genre film dan popularitas relatif dari masing-masing genre.
+![jumlah film per genre](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/ceaeef38-91f4-4383-9c00-6a9f1e407ec2)
+
+  
+- Menampilkan dataset ratings
+  
+  Dataset ratings.csv yang berisi informasi tentang penilaian user terhadap film-film dimuat. Dataset ini ditampilkan untuk memeriksa struktur dan konten awalnya.
+  |        | userId | movieId | rating |  timestamp |
+  |:------:|:------:|:-------:|:------:|:----------:|
+  |      0 |      1 |       1 |    4.0 |  964982703 |
+  |      1 |      1 |       3 |    4.0 |  964981247 |
+  |      2 |      1 |       6 |    4.0 |  964982224 |
+  |      3 |      1 |      47 |    5.0 |  964983815 |
+  |      4 |      1 |      50 |    5.0 |  964982931 |
+  |    ... |    ... |     ... |    ... |        ... |
+  | 100831 |    610 |  166534 |    4.0 | 1493848402 |
+  | 100832 |    610 |  168248 |    5.0 | 1493850091 |
+  | 100833 |    610 |  168250 |    5.0 | 1494273047 |
+  | 100834 |    610 |  168252 |    5.0 | 1493846352 |
+  | 100835 |    610 |  170875 |    3.0 | 1493846415 |
+
+- Menghitung jumlah user dan film pada dataset ratings
+  
+  Setelah dataset ratings ditampilkan, langkah berikutnya adalah menghitung jumlah pengguna unik (user) dan jumlah film unik yang ada dalam dataset tersebut. Informasi ini penting untuk memahami cakupan data yang dimiliki. Jumlah pengguna unik adalah 610 dan jumlah film unik adalah 9724.
+  
+- Menampilkan ringkasan statistik dataset ratings
+  
+  Statistik deskriptif seperti rata-rata, median, dan kuartil dihitung untuk dataset ratings. Ini membantu dalam memahami distribusi rating yang diberikan oleh pengguna.
+  
+  |        | userId | movieId | rating |  timestamp |
+  |:------:|:------:|:-------:|:------:|:----------:|
+  |      0 |      1 |       1 |    4.0 |  964982703 |
+  |      1 |      1 |       3 |    4.0 |  964981247 |
+  |      2 |      1 |       6 |    4.0 |  964982224 |
+  |      3 |      1 |      47 |    5.0 |  964983815 |
+  |      4 |      1 |      50 |    5.0 |  964982931 |
+  |    ... |    ... |     ... |    ... |        ... |
+  | 100831 |    610 |  166534 |    4.0 | 1493848402 |
+  | 100832 |    610 |  168248 |    5.0 | 1493850091 |
+  | 100833 |    610 |  168250 |    5.0 | 1494273047 |
+  | 100834 |    610 |  168252 |    5.0 | 1493846352 |
+  | 100835 |    610 |  170875 |    3.0 | 1493846415 |
+
+- Melakukan visualisasi rating film
+  
+  Visualisasi digunakan untuk memahami distribusi rating yang diberikan oleh pengguna untuk film-film dalam dataset. Grafik seperti histogram memberikan gambaran visual tentang sebaran rating.
+  ![distribusi rating film](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/6fe6d8a6-15b9-4ff3-9304-c2c9cfd3239c)
+
+- Menganalisa jumlah rating film per tahun
+  
+  Analisis dilakukan untuk melihat jumlah rating film yang diberikan oleh pengguna per tahun. Hal ini membantu dalam memahami tren penilaian pengguna dari waktu ke waktu dan mencari pola-pola menarik.
+  ![jumlah rating per tahun](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/4b2feb61-060b-484f-8d5f-83da93ab1bee)
 
 ## Data Preparation
 Pada bagian ini Anda menerapkan dan menyebutkan teknik data preparation yang dilakukan. Teknik yang digunakan pada notebook dan laporan harus berurutan.
