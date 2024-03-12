@@ -14,7 +14,7 @@ Dalam era digital yang terus berkembang, hiburan melalui film telah menjadi bagi
 Dalam dunia yang penuh dengan pilihan film yang tak terbatas, pengguna sering kali merasa kewalahan dalam mencari konten yang sesuai dengan preferensi pengguna. Oleh karena itu, dengan adanya kebutuhan mendesak untuk menciptakan solusi yang efisien dan efektif untuk membantu pengguna memilih film yang relevan. Melalui pemahaman terhadap kebutuhan pasar dan kemampuan teknologi, proyek ini bertujuan untuk menghadirkan pengalaman sinematik yang paling memuaskan bagi pengguna, serta mendukung pertumbuhan bisnis dan industri film secara keseluruhan.
 
 ### Problem Statements
-- Ketidakefisienan dalam Pencarian Film: Pengguna sering kali menghabiskan waktu yang berharga untuk mencari film yang sesuai dengan preferensi mereka, menyebabkan kebingungan dan penurunan kepuasan.
+- Ketidakefisienan dalam Pencarian Film: Pengguna sering kali menghabiskan waktu yang berharga untuk mencari film yang sesuai dengan preferensi pengguna, menyebabkan kebingungan dan penurunan kepuasan.
 - Keterbatasan dalam Rekomendasi yang Akurat: Algoritma rekomendasi yang kurang canggih cenderung memberikan rekomendasi yang kurang relevan, mengakibatkan pengguna kehilangan minat dan potensi untuk menemukan film-film baru yang menarik.
 
 ### Goals
@@ -61,6 +61,8 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
   | 9739 |  193585 |                              Flint (2017) |                                           Drama |
   | 9740 |  193587 |       Bungo Stray Dogs: Dead Apple (2018) |                               Action\|Animation |
   | 9741 |  193609 |       Andrew Dice Clay: Dice Rules (1991) |                                          Comedy |
+  
+  Tabel 1. Dataset "movies"
 
 - Menghitung jumlah film pada dataset "movies"
   
@@ -68,8 +70,10 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
  
 - Melakukan visualisasi jumlah film per genre
   
-  Visualisasi digunakan untuk menampilkan jumlah film yang termasuk dalam setiap genre. Hal ini memberikan gambaran visual tentang sebaran genre film dan popularitas relatif dari masing-masing genre.
+  Visualisasi digunakan untuk menampilkan jumlah film yang termasuk dalam setiap genre. Hal ini memberikan gambaran visual tentang sebaran genre film dan popularitas relatif dari masing-masing genre. Berdasarkan gambar 1, dapat dilihat bahwa genre film terbanyak yaitu drama lalu diikuti dengan genre comedy.
 ![jumlah film per genre](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/ceaeef38-91f4-4383-9c00-6a9f1e407ec2)
+
+  Gambar 1. Distribusi film per genre
 
   
 - Menampilkan dataset "ratings"
@@ -88,6 +92,8 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
   | 100833 |    610 |  168250 |    5.0 | 1494273047 |
   | 100834 |    610 |  168252 |    5.0 | 1493846352 |
   | 100835 |    610 |  170875 |    3.0 | 1493846415 |
+  
+  Tabel 2. Dataset "ratings"
 
 - Menghitung jumlah user dan film pada dataset ratings
   
@@ -110,16 +116,22 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
   | 100833 |    610 |  168250 |    5.0 | 1494273047 |
   | 100834 |    610 |  168252 |    5.0 | 1493846352 |
   | 100835 |    610 |  170875 |    3.0 | 1493846415 |
+  
+  Tabel 3. Ringkasan statistik
 
 - Melakukan visualisasi rating film
   
-  Visualisasi digunakan untuk memahami distribusi rating yang diberikan oleh pengguna untuk film-film dalam dataset. Grafik seperti histogram memberikan gambaran visual tentang sebaran rating.
+  Visualisasi digunakan untuk memahami distribusi rating yang diberikan oleh pengguna untuk film-film dalam dataset. Grafik seperti histogram memberikan gambaran visual tentang sebaran rating. Berdasarkan gambar 2, dapat dilihat kebanyakan pengguna memberikan rating dengan nilai 4 dari 5.
   ![distribusi rating film](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/6fe6d8a6-15b9-4ff3-9304-c2c9cfd3239c)
+  
+  Gambar 2. Persebaran rating film
 
 - Menganalisa jumlah rating film per tahun
   
-  Analisis dilakukan untuk melihat jumlah rating film yang diberikan oleh pengguna per tahun. Hal ini membantu dalam memahami tren penilaian pengguna dari waktu ke waktu dan mencari pola-pola menarik.
+  Analisis dilakukan untuk melihat jumlah rating film yang diberikan oleh pengguna per tahun. Hal ini membantu dalam memahami tren penilaian pengguna dari waktu ke waktu dan mencari pola-pola menarik. Berdasarkan gambar 3, dapat dilihat jumlah rating tertinggi terdapat pada tahun 2000.
   ![jumlah rating per tahun](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/4b2feb61-060b-484f-8d5f-83da93ab1bee)
+
+  Gambar 3. Distribusi rating film per tahun
 
 ## Data Preparation
 
@@ -163,9 +175,9 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
 
   Pivot tabel dibuat dengan menggunakan dataset gabungan untuk menyusun _user-item matrix_, yang merupakan dasar dari algoritma _collaborative filtering_.
   
-- Mengisi nilai null dengan 0
+- Mengisi nilai _null_ dengan 0
   
-  Nilai null (atau NaN) dalam _user-item matrix_ diisi dengan 0. Hal ini dilakukan agar matrix bisa diproses dengan benar oleh algoritma.
+  Nilai _null_ (atau _NaN_) dalam _user-item matrix_ diisi dengan 0. Hal ini dilakukan agar matrix bisa diproses dengan benar oleh algoritma.
   
 - Menampilkan matrix rating
 
@@ -219,6 +231,8 @@ Penjelasan Model:
 Berikut adalah top 10 rekomendasi film berdasarkan model ini:
 ![image](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/cc052e34-baed-4887-b198-c019e6182d6a)
 
+Gambar 4. Rekomendasi berdasarkan konten
+
 Kelebihan:
 
 - Sederhana dan mudah diimplementasikan.
@@ -233,7 +247,7 @@ Kekurangan:
 
 #### Cluster Based Algorithm
 Penjelasan Model:
-- Model ini menggunakan algoritma _KMeans_ untuk melakukan _clustering_ terhadap pengguna berdasarkan preferensi mereka terhadap film.
+- Model ini menggunakan algoritma _KMeans_ untuk melakukan _clustering_ terhadap pengguna berdasarkan preferensi pengguna terhadap film.
 - Pada model ini dilakukan _hyperparameter tuning_ menggunakan _GridSearchCV_ untuk mencari parameter terbaik.
 - Fungsi "recommend_movies_kmeans" digunakan untuk merekomendasikan film berdasarkan kluster pengguna.
 
@@ -251,17 +265,19 @@ Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak
 | 8 |   858   |                             Godfather, The (1972) |                   Crime\|Drama |
 | 9 |   1198  | Raiders of the Lost Ark (Indiana Jones and the... |              Action\|Adventure |
 
+Tabel 4. Rekomendasi film dengan menggunakan teknik _clustering_
+
 Kelebihan:
 
-- Memperhitungkan preferensi pengguna berdasarkan pola penilaian mereka.
+- Memperhitungkan preferensi pengguna berdasarkan pola penilaian pengguna.
 - Mampu menyesuaikan rekomendasi berdasarkan kluster pengguna.
 
 Kekurangan:
 
-- Bergantung pada kualitas "clustering", bisa jadi kurang akurat jika kluster tidak merepresentasikan preferensi dengan baik.
+- Bergantung pada kualitas _clustering_, bisa jadi kurang akurat jika kluster tidak merepresentasikan preferensi dengan baik.
 - Tidak memperhitungkan informasi film selain kluster pengguna.
 
-#### _Deep Learning_
+#### Deep Learning
 Penjelasan Model:
 
 - Model ini menggunakan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton oleh pengguna.
@@ -281,6 +297,8 @@ Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak
 | 7 |   2858  |                            American Beauty (1999) |                 Drama\|Romance |
 | 8 |   858   |                             Godfather, The (1972) |                   Crime\|Drama |
 | 9 |   1198  | Raiders of the Lost Ark (Indiana Jones and the... |              Action\|Adventure |
+
+Tabel 5. Rekomendasi film menggunakan teknik _deep learning_
 
 Kelebihan:
 
@@ -318,12 +336,14 @@ _Root Mean Squared Error_ adalah akar kuadrat dari _MSE_. Ini memberikan ukuran 
 ### Model Evaluation
 
 - _KMeans CLustering_
-Pada model dengan pendekatan _Clustering_ menghasilkan nilai kesalahan sebagai berikut :
+  
+  Pada model dengan pendekatan _Clustering_ menghasilkan nilai kesalahan sebagai berikut :
     - _MSE_ : 0.05743065031937357
     - _RMSE_ : 0.2396469284580413
  
 - _Deep Learning_
-Pada model dengan pendekatan _Deep Learning_ menghasilkan nilai kesalahan sebagai berikut :
+
+  Pada model dengan pendekatan _Deep Learning_ menghasilkan nilai kesalahan sebagai berikut :
     - _MSE_ : 0.0102
     - _Validation MSE_ : 0.0384
     - _RMSE_ : 0.1008
@@ -336,7 +356,7 @@ Pada model dengan pendekatan _Deep Learning_ menghasilkan nilai kesalahan sebaga
 
 #### Solusi Efektif
 - _Content-Based Filtering_ dengan _Cosine Similarity_: Pendekatan ini terbukti efektif dalam merekomendasikan film berdasarkan kesamaan genre. Meskipun sederhana, model ini memberikan rekomendasi yang relevan berdasarkan informasi genre film.
-- _Collaborative Filtering_ dengan Algoritma _KMeans Clustering_ dan _Deep Learning_: Kedua pendekatan ini juga berhasil dalam memberikan rekomendasi film. Pendekatan _KMeans Clustering_ mengelompokkan pengguna berdasarkan preferensi mereka, sementara pendekatan _Deep Learning_ memanfaatkan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton.
+- _Collaborative Filtering_ dengan Algoritma _KMeans Clustering_ dan _Deep Learning_: Kedua pendekatan ini juga berhasil dalam memberikan rekomendasi film. Pendekatan _KMeans Clustering_ mengelompokkan pengguna berdasarkan preferensi pengguna, sementara pendekatan _Deep Learning_ memanfaatkan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton.
 
 #### Perluasan Penelitian
 - Inklusi Informasi Tambahan: Untuk meningkatkan akurasi rekomendasi, penelitian selanjutnya dapat mempertimbangkan inklusi informasi tambahan seperti metadata film, ulasan pengguna, atau faktor-faktor lain yang dapat mempengaruhi preferensi pengguna.
@@ -344,4 +364,24 @@ Pada model dengan pendekatan _Deep Learning_ menghasilkan nilai kesalahan sebaga
 - Optimisasi Komputasi: Mengingat _Deep Learning_ membutuhkan komputasi yang intensif, penelitian dapat fokus pada optimisasi komputasi untuk meningkatkan efisiensi dan kinerja model.
 
 ## References
+
+[1] Zhang, S., Yao, L., Sun, A., &Tay, Y. (2018). Deep Learning based Recommender System: A Survey and New Perspectives. ACM Computing Surveys, 1-35.
+
+[2] Bobadilla, J., Alonso, S., & Hernando, A. (2020). Deep Learning Architecture for Collaborative Filtering Recommender Systems. MDPI andACS Style, 1-14.
+
+[3] Khoali, M., Tali, A., & Laaziz, Y. (2020). Advanced Recommendation Systems Through Deep Learning. Association for Computing Machinery, 1-8.
+
+[4] Phorasim, P., & Yu, L. 2017. Movies Recommendation Using Collaborative Filtering and K-Means. In International Journal of Advanced Computer Research, 55-58.
+
+[5] B. T. W. Utomo and A. W. Anggriawan, “Sistem Rekomendasi Paket Wisata Se-Malang Raya Menggunakan Metode Hybrid Content Based Dan Collaborative,” J. Ilm. Teknol. Inf. Asia, vol. 9, no. 1, pp. 6–13, 2015.
+
+[6] A. Kurniawan, “Sistem Rekomendasi Produk Sepatu Dengan Menggunakan Menggunakan Metode Collaborative Filtering,” Semin. Nas. Teknol. Inf. dan Komun., vol. 2016, no. Sentika, pp. 610–614, 2016.
+
+[7] I. M. A. W. Putra, G. Indrawan, and K. Y. E. Aryanto, “Sistem Rekomendasi Berdasarkan Data Transaksi Perpustakaan Daerah Tabanan dengan menggunakan K-Means Clustering,” J. Ilmu Komput. Indones., vol. 3, no. 1, pp. 18–22, 2018.
+
+[8] R. Ahuja, A. Solanki and A. Nayyar, "Movie Recommender System Using K-Means," 2019.
+
+[9]  J. Fadhil and W. F. Mahmudy, "Pembuatan Sistem Rekomendasi Menggunakan Decision Tree dan Clustering," vol. 3, no. 1, 2007.
+
+[10]  A. Halim, H. Gohzali, D. M. Panjaitan and I. Maulana, "Sistem Rekomendasi Film menggunakan Bisecting K-Means d an Collaborative Filtering," CITISEE 2017, p. 37, 2017.
 
