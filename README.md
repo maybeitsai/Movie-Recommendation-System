@@ -224,103 +224,119 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
 
 ### Content-Based Filtering
 Penjelasan Model:
-- Model ini menggunakan _cosine similarity_ untuk menghitung seberapa mirip antara film-film berdasarkan fitur genre.
-- _Cosine similarity_ digunakan untuk menghasilkan matriks _similarity_ antar film.
-- Fungsi "get_recommendations" digunakan untuk mendapatkan rekomendasi film berdasarkan _similarity score_.
+_Cosine similarity_ digunakan dalam _Content-Based Filtering_ untuk mengukur seberapa mirip dua vektor dalam ruang berdimensi banyak (_multidimensional space_) dengan mengukur _cosinus_ sudut antara kedua vektor. Algoritma ini cocok digunakan dalam sistem rekomendasi berbasis konten karena dapat mengukur kesamaan antara fitur-fitur film seperti genre). _Cosine similarity_ digunakan untuk menghasilkan matriks _similarity_ antar film. Cara kerja _cosine similarity_ yaitu menghitung _cosine_ dari sudut antara dua vektor. Jika dua vektor memiliki arah yang sama, maka _similarity score_ mendekati 1; jika mereka tegak lurus, _similarity score_ adalah 0; dan jika arahnya berlawanan, _similarity score_ adalah -1.
 
-Berikut adalah top 10 rekomendasi film berdasarkan model ini:
+_Cosine Similarity_ antara vektor A dan B dihitung dengan rumus:
 
-|   |                       title                       |           genres          | movieId | Similarity Score |
-|:-:|:-------------------------------------------------:|:-------------------------:|:-------:|:----------------:|
-| 0 |         Star Wars: Episode IV - A New Hope (1977) | Action\|Adventure\|Sci-Fi |   260   |        1.0       |
-| 1 |                                   Stargate (1994) | Action\|Adventure\|Sci-Fi |   316   |        1.0       |
-| 2 |                             Demolition Man (1993) | Action\|Adventure\|Sci-Fi |   442   |        1.0       |
-| 3 | Star Wars: Episode V - The Empire Strikes Back... | Action\|Adventure\|Sci-Fi |   1196  |        1.0       |
-| 4 | Star Wars: Episode VI - Return of the Jedi (1983) | Action\|Adventure\|Sci-Fi |   1210  |        1.0       |
-| 5 |        Star Trek III: The Search for Spock (1984) | Action\|Adventure\|Sci-Fi |   1375  |        1.0       |
-| 6 |                              Lost in Space (1998) | Action\|Adventure\|Sci-Fi |   1831  |        1.0       |
-| 7 |                             Rocketeer, The (1991) | Action\|Adventure\|Sci-Fi |   2094  |        1.0       |
-| 8 |                                       Tron (1982) | Action\|Adventure\|Sci-Fi |   2105  |        1.0       |
-| 9 |                         Six-String Samurai (1998) | Action\|Adventure\|Sci-Fi |   2275  |        1.0       |
+**_cosine_similarity_(A, B) = (A • B) / (||A|| * ||B||)**
 
-Tabel 4. Rekomendasi berdasarkan konten
+Keterangan:
+- A • B: Hasil perkalian dot (dot product) antara vektor A dan B.
+- ||A|| dan ||B||: Magnitudo (norm) dari vektor A dan B, secara berturut-turut.
 
-Kelebihan:
+Berikut adalah top 10 rekomendasi film berdasarkan dengan id 99750:
+
+|   |                 title                |         genres         | movieId | Similarity Score |
+|:-:|:------------------------------------:|:----------------------:|:-------:|:----------------:|
+| 0 |                       Amateur (1994) | Crime\|Drama\|Thriller |     149 |              1.0 |
+| 1 |                 Kiss of Death (1995) | Crime\|Drama\|Thriller |     259 |              1.0 |
+| 2 |                         Fresh (1994) | Crime\|Drama\|Thriller |     456 |              1.0 |
+| 3 |                   Killing Zoe (1994) | Crime\|Drama\|Thriller |     482 |              1.0 |
+| 4 |              Perfect World, A (1993) | Crime\|Drama\|Thriller |     507 |              1.0 |
+| 5 |              Mulholland Falls (1996) | Crime\|Drama\|Thriller |     707 |              1.0 |
+| 6 |                     Cape Fear (1962) | Crime\|Drama\|Thriller |    1344 |              1.0 |
+| 7 | Blood and Wine (Blood & Wine) (1996) | Crime\|Drama\|Thriller |    1351 |              1.0 |
+| 8 |            Desperate Measures (1998) | Crime\|Drama\|Thriller |    1598 |              1.0 |
+| 9 |                   Playing God (1997) | Crime\|Drama\|Thriller |    1647 |              1.0 |
+
+Tabel 4. Rekomendasi berbasis konten berdasarkan film dengan id 99750
+
+Kelebihan model dengan _cosine similarity_:
 
 - Sederhana dan mudah diimplementasikan.
 - Efektif dalam merekomendasikan film berdasarkan kesamaan genre.
 
-Kekurangan:
+Kekurangan model dengan _cosine similarity_:
 
 - Mengabaikan informasi selain genre dalam film, seperti rating atau ulasan pengguna.
 - Tidak memperhitungkan preferensi individu pengguna.
 
 ### Collaborative Filtering
 
-#### Cluster Based Algorithm
-Penjelasan Model:
-- Model ini menggunakan algoritma _KMeans_ untuk melakukan _clustering_ terhadap pengguna berdasarkan preferensi pengguna terhadap film.
-- Pada model ini dilakukan _hyperparameter tuning_ menggunakan _GridSearchCV_ untuk mencari parameter terbaik.
-- Fungsi "recommend_movies_kmeans" digunakan untuk merekomendasikan film berdasarkan kluster pengguna.
+#### KMeans Clustering
 
-Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak:
+Algoritma _KMeans_ digunakan dalam _Collaborative Filtering_ dengan _Cluster Based Algorithm_ untuk mengelompokkan pengguna berdasarkan preferensi mereka terhadap film. Algoritma ini cocok digunakan karena dapat membagi pengguna ke dalam kelompok-kelompok yang memiliki preferensi yang mirip. _KMeans_ bekerja dengan cara mengelompokkan data ke dalam k kelompok (_clusters_) berdasarkan jarak dari pusat kluster terdekat. Tujuan utamanya adalah untuk meminimalkan jumlah variasi dalam kluster dan memaksimalkan variasi antara kluster.
 
-|   | movieId |                       title                       |             genres             |
-|:-:|:-------:|:-------------------------------------------------:|:------------------------------:|
-| 0 |   318   |                  Shawshank Redemption, The (1994) |                   Crime\|Drama |
-| 1 |   2571  |                                Matrix, The (1999) |       Action\|Sci-Fi\|Thriller |
-| 2 |   356   |                               Forrest Gump (1994) |    Comedy\|Drama\|Romance\|War |
-| 3 |   260   |         Star Wars: Episode IV - A New Hope (1977) |      Action\|Adventure\|Sci-Fi |
-| 4 |   296   |                               Pulp Fiction (1994) | Comedy\|Crime\|Drama\|Thriller |
-| 5 |   2959  |                                 Fight Club (1999) | Action\|Crime\|Drama\|Thriller |
-| 6 |   593   |                  Silence of the Lambs, The (1991) |        Crime\|Horror\|Thriller |
-| 7 |   2858  |                            American Beauty (1999) |                 Drama\|Romance |
-| 8 |   858   |                             Godfather, The (1972) |                   Crime\|Drama |
-| 9 |   1198  | Raiders of the Lost Ark (Indiana Jones and the... |              Action\|Adventure |
+Pada model ini dilakukan _hyperparameter tuning_ menggunakan _GridSearchCV_ untuk mencari parameter terbaik. _GridSearchCV_ mencari kombinasi parameter secara sistematis dengan melakukan pencarian melintasi seluruh ruang parameter yang diberikan. Salah satu keuntungan penggunaannya yaitu _GridSearchCV_ secara sistematis mencoba setiap kombinasi parameter yang mungkin, sehingga membantu menemukan kombinasi parameter terbaik untuk _KMeans_. Beberapa parameter yang diatur melalui _hyperparameter tuning_ pada _KMeans_ antara lain:
 
-Tabel 5. Rekomendasi film dengan menggunakan teknik _clustering_
+- 'n_clusters': Jumlah kluster yang akan dibentuk.
+- 'init': Metode inisialisasi kluster.
+- 'n_init': Jumlah iterasi _k-means_ yang berbeda untuk inisialisasi kluster yang berbeda.
+- 'max_iter': Jumlah maksimum iterasi yang akan dijalankan pada satu run.
+- 'tol': Toleransi untuk konvergensi.
+- 'random_state': _Seed_ untuk inisialisasi _centroid_ secara acak.
 
-Kelebihan:
+Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna dengan id 247:
+
+|   | movieId |                       title                       |                genres               |
+|:-:|:-------:|:-------------------------------------------------:|:-----------------------------------:|
+| 0 |    4973 | Amelie (Fabuleux destin d'Amélie Poulain, Le) ... |                     Comedy\|Romance |
+| 1 |    4963 |                             Ocean's Eleven (2001) |                     Crime\|Thriller |
+| 2 |    1206 |                        Clockwork Orange, A (1971) |      Crime\|Drama\|Sci-Fi\|Thriller |
+| 3 |    3793 |                                      X-Men (2000) |           Action\|Adventure\|Sci-Fi |
+| 4 |     780 |              Independence Day (a.k.a. ID4) (1996) | Action\|Adventure\|Sci-Fi\|Thriller |
+| 5 |    1527 |                         Fifth Element, The (1997) |   Action\|Adventure\|Comedy\|Sci-Fi |
+| 6 |    1580 |                  Men in Black (a.k.a. MIB) (1997) |              Action\|Comedy\|Sci-Fi |
+| 7 |    4022 |                                  Cast Away (2000) |                               Drama |
+| 8 |    1721 |                                    Titanic (1997) |                      Drama\|Romance |
+| 9 |     541 |                               Blade Runner (1982) |            Action\|Sci-Fi\|Thriller |
+
+Tabel 5. Rekomendasi film dengan menggunakan teknik _clustering_ untuk pengguna dengan id 247
+
+Kelebihan model _KMeans Clustering_:
 
 - Memperhitungkan preferensi pengguna berdasarkan pola penilaian pengguna.
 - Mampu menyesuaikan rekomendasi berdasarkan kluster pengguna.
 
-Kekurangan:
+Kekurangan model _KMeans Clustering_:
 
 - Bergantung pada kualitas _clustering_, bisa jadi kurang akurat jika kluster tidak merepresentasikan preferensi dengan baik.
 - Tidak memperhitungkan informasi film selain kluster pengguna.
 
 #### Deep Learning
-Penjelasan Model:
 
-- Model ini menggunakan jaringan saraf tiruan untuk memprediksi rating film yang belum ditonton oleh pengguna.
-- Pada model ini dilakukan _hyperparameter tuning_ menggunakan _RandomSearch_ untuk mencari parameter terbaik.
-- Fungsi "recommend_movies_dl" digunakan untuk merekomendasikan film berdasarkan prediksi rating.
+_Deep Learning_ digunakan dalam _Collaborative Filtering_ untuk memprediksi rating film yang belum ditonton oleh pengguna. Algoritma ini cocok digunakan karena dapat memodelkan hubungan kompleks antara fitur-fitur pengguna dan item. Jaringan saraf tiruan (_Neural Network_) memodelkan hubungan antara _input_ dan _output_ melalui serangkaian lapisan neuron. Dalam konteks ini, model _deep learning_ dipelajari untuk memprediksi rating film berdasarkan sejarah rating pengguna sebelumnya.
 
-Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak:
+Pada model ini dilakukan _hyperparameter tuning_ untuk menemukan parameter terbaik untuk model _neural network_ seperti jumlah unit dalam lapisan tersembunyi, _dropout rate_, _learning rate_, dan lainnya. _RandomSearch_ digunakan sebagai teknik _hyperparameter tuning_ karena mencoba berbagai kombinasi parameter secara acak, memungkinkan untuk menemukan parameter yang optimal dengan eksplorasi yang lebih cepat di ruang parameter yang besar. Beberapa parameter yang diatur melalui _hyperparameter tuning_ dengan _RandomSearch_ pada _deep learning_ antara lain:
 
-|   | movieId |                       title                       |             genres             |
-|:-:|:-------:|:-------------------------------------------------:|:------------------------------:|
-| 0 |   318   |                  Shawshank Redemption, The (1994) |                   Crime\|Drama |
-| 1 |   2571  |                                Matrix, The (1999) |       Action\|Sci-Fi\|Thriller |
-| 2 |   356   |                               Forrest Gump (1994) |    Comedy\|Drama\|Romance\|War |
-| 3 |   260   |         Star Wars: Episode IV - A New Hope (1977) |      Action\|Adventure\|Sci-Fi |
-| 4 |   296   |                               Pulp Fiction (1994) | Comedy\|Crime\|Drama\|Thriller |
-| 5 |   2959  |                                 Fight Club (1999) | Action\|Crime\|Drama\|Thriller |
-| 6 |   593   |                  Silence of the Lambs, The (1991) |        Crime\|Horror\|Thriller |
-| 7 |   2858  |                            American Beauty (1999) |                 Drama\|Romance |
-| 8 |   858   |                             Godfather, The (1972) |                   Crime\|Drama |
-| 9 |   1198  | Raiders of the Lost Ark (Indiana Jones and the... |              Action\|Adventure |
+- 'units': Jumlah unit dalam lapisan tersembunyi.
+- 'dropout': _Dropout rate_ untuk menghindari _overfitting_.
+- 'learning_rate': Tingkat belajar pada model _neural network_.
 
-Tabel 6. Rekomendasi film menggunakan teknik _deep learning_
+Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna dengan id 37:
 
-Kelebihan:
+|   | movieId |                       title                       |                        genres                       |
+|:-:|:-------:|:-------------------------------------------------:|:---------------------------------------------------:|
+| 0 |    7121 |                                 Adam's Rib (1949) |                                     Comedy\|Romance |
+| 1 |   78836 |                             Enter the Void (2009) |                                               Drama |
+| 2 |    3224 |          Woman in the Dunes (Suna no onna) (1964) |                                               Drama |
+| 3 |    6818 |                Come and See (Idi i smotri) (1985) |                                          Drama\|War |
+| 4 |    6442 |                               Belle époque (1992) |                                     Comedy\|Romance |
+| 5 |      53 |                                   Lamerica (1994) |                                    Adventure\|Drama |
+| 6 |    3473 | Jonah Who Will Be 25 in the Year 2000 (Jonas q... |                                              Comedy |
+| 7 |    5833 |                               Dog Soldiers (2002) |                                      Action\|Horror |
+| 8 |    4956 |                             Stunt Man, The (1980) | Action\|Adventure\|Comedy\|Drama\|Romance\|Thriller |
+| 9 |    9018 |                               Control Room (2004) |                                    Documentary\|War |
+
+Tabel 6. Rekomendasi film menggunakan teknik _deep learning_ untuk pengguna dengan id 37
+
+Kelebihan model _deep learning_:
 
 - Mampu memperhitungkan pola yang kompleks dan _non-linear_ dalam preferensi pengguna.
 - Dapat memanfaatkan informasi lebih lanjut seperti metadata film.
 - Mampu memperbaiki rekomendasi seiring waktu dengan _training_ ulang.
 
-Kekurangan:
+Kekurangan model _deep learning_:
 
 - Membutuhkan komputasi yang lebih intensif untuk _training_ model.
 - Bergantung pada kualitas dan kuantitas data yang digunakan untuk _training_ model.
@@ -332,7 +348,7 @@ Kekurangan:
 - _Mean Squared Error (MSE)_ :
 _Mean Squared Error_ adalah metrik yang digunakan untuk mengukur seberapa dekat rata-rata kuadrat dari selisih antara nilai yang diprediksi dan nilai yang sebenarnya dari data sampel. Metrik ini digunakan pada model dengan pendekatan _Collaborative Filtering_. Formula untuk _MSE_ adalah sebagai berikut :
 
-  _MSE_ = $\frac{1}{n} \Sigma_{i=1}^n({y}-\hat{y})^2$
+  **_MSE_ = $\frac{1}{n} \Sigma_{i=1}^n({y}-\hat{y})^2$**
 
   Keterangan :
 
@@ -345,12 +361,12 @@ _Mean Squared Error_ adalah metrik yang digunakan untuk mengukur seberapa dekat 
 - _Root Mean Squared Error (RMSE)_ :
 _Root Mean Squared Error_ adalah akar kuadrat dari _MSE_. Ini memberikan ukuran kesalahan rata-rata antara nilai yang diprediksi dan nilai yang sebenarnya dalam satuan yang sama dengan variabel target. Metrik ini digunakan pada model dengan pendekatan _Collaborative Filtering_. _RMSE_ dihitung dengan cara berikut :
 
-  _RMSE_ = $\sqrt{MSE}$
+  **_RMSE_ = $\sqrt{MSE}$**
 
 - _Precision_ :
 _Precision_ adalah metrik evaluasi yang mengukur seberapa baik model membuat prediksi yang benar untuk kelas positif dari total prediksi positif yang dilakukan. Metrik ini digunakan pada model berbasis konten saja. _Precision_ dihitung dengan cara berikut :
 
-  _Precision_ = TP / (TP + FP)
+  **_Precision_ = TP / (TP + FP)**
 
   Keterangan :
 
@@ -360,7 +376,7 @@ _Precision_ adalah metrik evaluasi yang mengukur seberapa baik model membuat pre
 
   Pada evaluasi menggunakan presisi, terdapat juga fungsi evaluasi berdasarkan jumlah _similarity score_ karena _similarity score_ mempresentasikan kesamaan dari jenis genre yang tidak dapat dikalkulasi oleh metrik _precision_ dari librari _Scikit-Learn_ karena perbedaan jumlah jenis genre per film. Adapun rumusnya dapat dihitung sebagai berikut.
 
-  _Precision_ = jumlah _similarity score_ / jumlah data rekomendasi
+  **_Precision_ = jumlah _similarity score_ / jumlah data rekomendasi**
 
 
 ### Model Evaluation
@@ -375,18 +391,17 @@ _Precision_ adalah metrik evaluasi yang mengukur seberapa baik model membuat pre
 
   Gambar 4. Visualisasi nilai presisi dari model berbasis konten
 
-
 ### Collaborative Filtering
 
 - _KMeans CLustering_
   
   Pada model dengan pendekatan _Clustering_ menghasilkan nilai kesalahan sebagai berikut :
-    - _MSE_ :  0.04460389925200849
-    - _RMSE_ : 0.21119635236435427
+    - _MSE_ :  0.12832081181345886
+    - _RMSE_ : 0.3582189439622908
 
   Berikut ini merupakan visualisasi hasil evaluasi pada model _KMeans CLustering_.
   
-  ![evaluasi clustering](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/d7867b91-e502-4a0a-a9f0-3b9c55736eb8)
+  ![evaluasi clustering](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/c3bfa1e8-1dba-4171-9d1b-50501256510e)
 
   Gambar 5. Visualisasi kesalahan pada model _KMeans CLustering_
 
@@ -394,18 +409,18 @@ _Precision_ adalah metrik evaluasi yang mengukur seberapa baik model membuat pre
 - _Deep Learning_
 
   Pada model dengan pendekatan _Deep Learning_ menghasilkan nilai kesalahan sebagai berikut :
-    - _MSE_ : 0.0101
-    - _Validation MSE_ : 0.0384
-    - _RMSE_ : 0.1006
-    - _Validation RMSE_ : 0.1958
+    - _MSE_ : 0.0063
+    - _Validation MSE_ : 0.0399
+    - _RMSE_ : 0.0794
+    - _Validation RMSE_ : 0.1999
   
   Berikut ini merupakan visualisasi hasil evaluasi pada model _Deep Learning_.
 
-  ![mse deep learning](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/c8e52f2d-c08e-4381-94c7-db000bbc0d05)
+  ![mse deep learning](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/8dfc6406-ebc0-4e6b-879f-8e23508ac706)
   
   Gambar 6. _Mean Squared Error (MSE)_ pada model _Deep Learning_
 
-  ![rmse deep learning](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/1c0fd3c5-2f3f-410a-9d86-88ae85d709ec)
+  ![rmse deep learning](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/489edc2f-dd0e-432b-8171-0622dd6265f1)
   
   Gambar 7. _Root Mean Squared Error (RMSE)_ pada model _Deep Learning_
 
