@@ -264,6 +264,7 @@ Penjelasan Model:
 - Fungsi "recommend_movies_kmeans" digunakan untuk merekomendasikan film berdasarkan kluster pengguna.
 
 Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak:
+
 |   | movieId |                       title                       |             genres             |
 |:-:|:-------:|:-------------------------------------------------:|:------------------------------:|
 | 0 |   318   |                  Shawshank Redemption, The (1994) |                   Crime\|Drama |
@@ -297,6 +298,7 @@ Penjelasan Model:
 - Fungsi "recommend_movies_dl" digunakan untuk merekomendasikan film berdasarkan prediksi rating.
 
 Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak:
+
 |   | movieId |                       title                       |             genres             |
 |:-:|:-------:|:-------------------------------------------------:|:------------------------------:|
 | 0 |   318   |                  Shawshank Redemption, The (1994) |                   Crime\|Drama |
@@ -345,21 +347,54 @@ _Root Mean Squared Error_ adalah akar kuadrat dari _MSE_. Ini memberikan ukuran 
 
   _RMSE_ = $\sqrt{MSE}$
 
+- _Precision_ :
+_Precision_ adalah metrik evaluasi yang mengukur seberapa baik model membuat prediksi yang benar untuk kelas positif dari total prediksi positif yang dilakukan.
+
 ### Model Evaluation
+
+### Content-Based Filtering
+
+- _Cosine Similarity_
+
+  Pada model dengan menggunakan _Cosine Similarity_ menghasilkan nilai presisi 100% dari top 10 rekomendasi film.
+
+  ![evaluasi cosine](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/ff1fc8de-c3f1-4976-9ac5-2dfd71c7a465)
+
+  Gambar 4. Visualisasi nilai presisi dari model berbasis konten
+
+
+### Collaborative Filtering
 
 - _KMeans CLustering_
   
   Pada model dengan pendekatan _Clustering_ menghasilkan nilai kesalahan sebagai berikut :
-    - _MSE_ : 0.05743065031937357
-    - _RMSE_ : 0.2396469284580413
+    - _MSE_ :  0.04460389925200849
+    - _RMSE_ : 0.21119635236435427
+
+  Berikut ini merupakan visualisasi hasil evaluasi pada model _KMeans CLustering_.
+  
+  ![evaluasi clustering](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/d7867b91-e502-4a0a-a9f0-3b9c55736eb8)
+
+  Gambar 5. Visualisasi kesalahan pada model _KMeans CLustering_
+
  
 - _Deep Learning_
 
   Pada model dengan pendekatan _Deep Learning_ menghasilkan nilai kesalahan sebagai berikut :
-    - _MSE_ : 0.0102
+    - _MSE_ : 0.0101
     - _Validation MSE_ : 0.0384
-    - _RMSE_ : 0.1008
-    - _Validation RMSE_ : 0.1960
+    - _RMSE_ : 0.1006
+    - _Validation RMSE_ : 0.1958
+  
+  Berikut ini merupakan visualisasi hasil evaluasi pada model _Deep Learning_.
+
+  ![mse deep learning](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/c8e52f2d-c08e-4381-94c7-db000bbc0d05)
+  
+  Gambar 6. _Mean Squared Error (MSE)_ pada model _Deep Learning_
+
+  ![rmse deep learning](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/1c0fd3c5-2f3f-410a-9d86-88ae85d709ec)
+  
+  Gambar 7. _Root Mean Squared Error (RMSE)_ pada model _Deep Learning_
 
 ### Kesimpulan
 #### Goals Achievement
