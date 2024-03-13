@@ -32,16 +32,16 @@ Terdapat dua dataset yang digunakan pada proyek ini yaitu movies.csv dan ratings
 ### movies.csv
 Dataset movies.csv merupakan kumpulan data tentang film-film beserta genre-genre yang dimilikinya. Dataset ini membantu dalam pemahaman tentang katalog film yang tersedia, serta genre-genre yang populer atau yang umumnya dipilih. Dataset ini terdiri dari 9742 baris dan 3 kolom. Kolom-kolom tersebut adalah sebagai berikut:
 
-- movieId: Merupakan ID unik untuk setiap film dalam dataset. Ini dapat digunakan sebagai kunci untuk menghubungkan data dengan dataset lainnya.
-- title: Menyajikan judul film.
-- genres: Merupakan genre-genre yang terkait dengan film tersebut.
+- 'movieId': Merupakan ID unik untuk setiap film dalam dataset. Ini dapat digunakan sebagai kunci untuk menghubungkan data dengan dataset lainnya.
+- 'title': Menyajikan judul film.
+- 'genres': Merupakan genre-genre yang terkait dengan film tersebut.
 
 ### ratings.csv
 Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengguna terhadap film-film tertentu. Dataset ini memberikan wawasan tentang preferensi pengguna terhadap film-film tertentu. Dataset ini terdiri dari 100836 baris dan 4 kolom. Kolom-kolom tersebut adalah sebagai berikut:
-- userId: Merupakan ID unik untuk setiap pengguna yang memberikan penilaian.
-- movieId: Merupakan ID unik untuk setiap film yang dinilai.
-- rating: Menunjukkan penilaian yang diberikan oleh pengguna terhadap film tersebut.
-- timestamp: Merupakan waktu ketika penilaian diberikan.
+- 'userId': Merupakan ID unik untuk setiap pengguna yang memberikan penilaian.
+- 'movieId': Merupakan ID unik untuk setiap film yang dinilai.
+- 'rating': Menunjukkan penilaian yang diberikan oleh pengguna terhadap film tersebut.
+- 'timestamp': Merupakan waktu ketika penilaian diberikan.
 
 ### Exploratory Data Analysis (EDA)
 - Menampilkan dataset "movies"
