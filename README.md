@@ -229,9 +229,21 @@ Penjelasan Model:
 - Fungsi "get_recommendations" digunakan untuk mendapatkan rekomendasi film berdasarkan _similarity score_.
 
 Berikut adalah top 10 rekomendasi film berdasarkan model ini:
-![image](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/cc052e34-baed-4887-b198-c019e6182d6a)
 
-Gambar 4. Rekomendasi berdasarkan konten
+|   |                       title                       |           genres          | movieId | Similarity Score |
+|:-:|:-------------------------------------------------:|:-------------------------:|:-------:|:----------------:|
+| 0 |         Star Wars: Episode IV - A New Hope (1977) | Action\|Adventure\|Sci-Fi |   260   |        1.0       |
+| 1 |                                   Stargate (1994) | Action\|Adventure\|Sci-Fi |   316   |        1.0       |
+| 2 |                             Demolition Man (1993) | Action\|Adventure\|Sci-Fi |   442   |        1.0       |
+| 3 | Star Wars: Episode V - The Empire Strikes Back... | Action\|Adventure\|Sci-Fi |   1196  |        1.0       |
+| 4 | Star Wars: Episode VI - Return of the Jedi (1983) | Action\|Adventure\|Sci-Fi |   1210  |        1.0       |
+| 5 |        Star Trek III: The Search for Spock (1984) | Action\|Adventure\|Sci-Fi |   1375  |        1.0       |
+| 6 |                              Lost in Space (1998) | Action\|Adventure\|Sci-Fi |   1831  |        1.0       |
+| 7 |                             Rocketeer, The (1991) | Action\|Adventure\|Sci-Fi |   2094  |        1.0       |
+| 8 |                                       Tron (1982) | Action\|Adventure\|Sci-Fi |   2105  |        1.0       |
+| 9 |                         Six-String Samurai (1998) | Action\|Adventure\|Sci-Fi |   2275  |        1.0       |
+
+Tabel 4. Rekomendasi berdasarkan konten
 
 Kelebihan:
 
@@ -265,7 +277,7 @@ Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak
 | 8 |   858   |                             Godfather, The (1972) |                   Crime\|Drama |
 | 9 |   1198  | Raiders of the Lost Ark (Indiana Jones and the... |              Action\|Adventure |
 
-Tabel 4. Rekomendasi film dengan menggunakan teknik _clustering_
+Tabel 5. Rekomendasi film dengan menggunakan teknik _clustering_
 
 Kelebihan:
 
@@ -298,7 +310,7 @@ Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna acak
 | 8 |   858   |                             Godfather, The (1972) |                   Crime\|Drama |
 | 9 |   1198  | Raiders of the Lost Ark (Indiana Jones and the... |              Action\|Adventure |
 
-Tabel 5. Rekomendasi film menggunakan teknik _deep learning_
+Tabel 6. Rekomendasi film menggunakan teknik _deep learning_
 
 Kelebihan:
 
