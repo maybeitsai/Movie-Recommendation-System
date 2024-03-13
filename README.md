@@ -3,7 +3,7 @@
 ## Project Overview
 
 ### Latar Belakang
-Dalam era digital yang terus berkembang, hiburan melalui film telah menjadi bagian penting yang mengisi kehidupan sehari-hari. Namun, dengan berlimpahnya pilihan film yang tersedia di berbagai platform, pengguna seringkali merasa kebingungan untuk memilih film yang cocok dengan preferensi dan selera yang unik. Maka dari itu, tujuan dari proyek ini adalah untuk memberikan solusi yang memadai dengan mengembangkan sebuah sistem rekomendasi film yang tidak hanya inovatif, tetapi juga efektif. Sistem ini akan memberikan rekomendasi yang akurat dan personal kepada setiap pengguna berdasarkan preferensi film, sejarah penontonannya, dan faktor-faktor lainnya yang relevan. Dengan demikian, diharapkan pengguna dapat menemukan film-film yang sesuai dengan lebih mudah dan lebih relevan.
+Dalam era digital yang terus berkembang, hiburan melalui film telah menjadi bagian penting yang mengisi kehidupan sehari-hari. Namun, dengan berlimpahnya pilihan film yang tersedia di berbagai platform, pengguna seringkali merasa kebingungan untuk memilih film yang cocok dengan preferensi dan selera yang unik [1],[5],[9]. Maka dari itu, tujuan dari proyek ini adalah untuk memberikan solusi yang memadai dengan mengembangkan sebuah sistem rekomendasi film yang tidak hanya inovatif, tetapi juga efektif. Sistem ini akan memberikan rekomendasi yang akurat dan personal kepada setiap pengguna berdasarkan preferensi film, sejarah penontonannya, dan faktor-faktor lainnya yang relevan. Dengan demikian, diharapkan pengguna dapat menemukan film-film yang sesuai dengan lebih mudah dan lebih relevan.
 
 ### Pentingnya Proyek
 - Meningkatkan Pengalaman Pengguna: Sistem rekomendasi dapat meningkatkan pengalaman pengguna dengan menyediakan rekomendasi yang sesuai dengan preferensi penonton.
@@ -330,7 +330,7 @@ Kekurangan:
 ### Metrik
 
 - _Mean Squared Error (MSE)_ :
-_Mean Squared Error_ adalah metrik yang digunakan untuk mengukur seberapa dekat rata-rata kuadrat dari selisih antara nilai yang diprediksi dan nilai yang sebenarnya dari data sampel. Metrik ini digunakan pada model pertama dan kedua. Formula untuk _MSE_ adalah sebagai berikut :
+_Mean Squared Error_ adalah metrik yang digunakan untuk mengukur seberapa dekat rata-rata kuadrat dari selisih antara nilai yang diprediksi dan nilai yang sebenarnya dari data sampel. Metrik ini digunakan pada model dengan pendekatan _Collaborative Filtering_. Formula untuk _MSE_ adalah sebagai berikut :
 
   _MSE_ = $\frac{1}{n} \Sigma_{i=1}^n({y}-\hat{y})^2$
 
@@ -343,12 +343,25 @@ _Mean Squared Error_ adalah metrik yang digunakan untuk mengukur seberapa dekat 
     Ŷ : nilai yang diprediksi untuk sampel ke-i
 
 - _Root Mean Squared Error (RMSE)_ :
-_Root Mean Squared Error_ adalah akar kuadrat dari _MSE_. Ini memberikan ukuran kesalahan rata-rata antara nilai yang diprediksi dan nilai yang sebenarnya dalam satuan yang sama dengan variabel target. Metrik ini digunakan pada model pertama saja. _RMSE_ dihitung dengan cara berikut :
+_Root Mean Squared Error_ adalah akar kuadrat dari _MSE_. Ini memberikan ukuran kesalahan rata-rata antara nilai yang diprediksi dan nilai yang sebenarnya dalam satuan yang sama dengan variabel target. Metrik ini digunakan pada model dengan pendekatan _Collaborative Filtering_. _RMSE_ dihitung dengan cara berikut :
 
   _RMSE_ = $\sqrt{MSE}$
 
 - _Precision_ :
-_Precision_ adalah metrik evaluasi yang mengukur seberapa baik model membuat prediksi yang benar untuk kelas positif dari total prediksi positif yang dilakukan.
+_Precision_ adalah metrik evaluasi yang mengukur seberapa baik model membuat prediksi yang benar untuk kelas positif dari total prediksi positif yang dilakukan. Metrik ini digunakan pada model berbasis konten saja. _Precision_ dihitung dengan cara berikut :
+
+  _Precision_ = TP / (TP + FP)
+
+  Keterangan :
+
+    TP : jumlah contoh positif yang diprediksi dengan benar oleh model
+
+    FP : jumlah contoh negatif yang salah diprediksi sebagai positif oleh model
+
+  Pada evaluasi menggunakan presisi, terdapat juga fungsi evaluasi berdasarkan jumlah _similarity score_ karena _similarity score_ mempresentasikan kesamaan dari jenis genre yang tidak dapat dikalkulasi oleh metrik _precision_ dari librari _Scikit-Learn_ karena perbedaan jumlah jenis genre per film. Adapun rumusnya dapat dihitung sebagai berikut.
+
+  _Precision_ = jumlah _similarity score_ / jumlah data rekomendasi
+
 
 ### Model Evaluation
 
@@ -358,7 +371,7 @@ _Precision_ adalah metrik evaluasi yang mengukur seberapa baik model membuat pre
 
   Pada model dengan menggunakan _Cosine Similarity_ menghasilkan nilai presisi 100% dari top 10 rekomendasi film.
 
-  ![evaluasi cosine](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/ff1fc8de-c3f1-4976-9ac5-2dfd71c7a465)
+  ![evaluasi cosine](https://github.com/maybeitsai/Movie-Recommendation-System/assets/130530985/f6ed0c9c-db67-4010-8855-c8418ea6238b)
 
   Gambar 4. Visualisasi nilai presisi dari model berbasis konten
 
@@ -412,23 +425,25 @@ _Precision_ adalah metrik evaluasi yang mengukur seberapa baik model membuat pre
 
 ## References
 
-[1] Zhang, S., Yao, L., Sun, A., &Tay, Y. (2018). Deep Learning based Recommender System: A Survey and New Perspectives. ACM Computing Surveys, 1-35.
+[1] Lee, C., Han, D., Han, K., & Yi, M. (2022). Improving Graph-Based Movie Recommender System Using Cinematic Experience. Applied Sciences, 12(3), 1493.
 
-[2] Bobadilla, J., Alonso, S., & Hernando, A. (2020). Deep Learning Architecture for Collaborative Filtering Recommender Systems. MDPI andACS Style, 1-14.
+[2] Zhang, S., Yao, L., Sun, A., &Tay, Y. (2018). Deep Learning based Recommender System: A Survey and New Perspectives. ACM Computing Surveys, 1-35.
 
-[3] Khoali, M., Tali, A., & Laaziz, Y. (2020). Advanced Recommendation Systems Through Deep Learning. Association for Computing Machinery, 1-8.
+[3] Bobadilla, J., Alonso, S., & Hernando, A. (2020). Deep Learning Architecture for Collaborative Filtering Recommender Systems. MDPI andACS Style, 1-14.
 
-[4] Phorasim, P., & Yu, L. 2017. Movies Recommendation Using Collaborative Filtering and K-Means. In International Journal of Advanced Computer Research, 55-58.
+[4] Khoali, M., Tali, A., & Laaziz, Y. (2020). Advanced Recommendation Systems Through Deep Learning. Association for Computing Machinery, 1-8.
 
-[5] B. T. W. Utomo and A. W. Anggriawan, “Sistem Rekomendasi Paket Wisata Se-Malang Raya Menggunakan Metode Hybrid Content Based Dan Collaborative,” J. Ilm. Teknol. Inf. Asia, vol. 9, no. 1, pp. 6–13, 2015.
+[5] Phorasim, P., & Yu, L. 2017. Movies Recommendation Using Collaborative Filtering and K-Means. In International Journal of Advanced Computer Research, 55-58.
 
-[6] A. Kurniawan, “Sistem Rekomendasi Produk Sepatu Dengan Menggunakan Menggunakan Metode Collaborative Filtering,” Semin. Nas. Teknol. Inf. dan Komun., vol. 2016, no. Sentika, pp. 610–614, 2016.
+[6] B. T. W. Utomo and A. W. Anggriawan, “Sistem Rekomendasi Paket Wisata Se-Malang Raya Menggunakan Metode Hybrid Content Based Dan Collaborative,” J. Ilm. Teknol. Inf. Asia, vol. 9, no. 1, pp. 6–13, 2015.
 
-[7] I. M. A. W. Putra, G. Indrawan, and K. Y. E. Aryanto, “Sistem Rekomendasi Berdasarkan Data Transaksi Perpustakaan Daerah Tabanan dengan menggunakan K-Means Clustering,” J. Ilmu Komput. Indones., vol. 3, no. 1, pp. 18–22, 2018.
+[7] A. Kurniawan, “Sistem Rekomendasi Produk Sepatu Dengan Menggunakan Menggunakan Metode Collaborative Filtering,” Semin. Nas. Teknol. Inf. dan Komun., vol. 2016, no. Sentika, pp. 610–614, 2016.
 
-[8] R. Ahuja, A. Solanki and A. Nayyar, "Movie Recommender System Using K-Means," 2019.
+[8] I. M. A. W. Putra, G. Indrawan, and K. Y. E. Aryanto, “Sistem Rekomendasi Berdasarkan Data Transaksi Perpustakaan Daerah Tabanan dengan menggunakan K-Means Clustering,” J. Ilmu Komput. Indones., vol. 3, no. 1, pp. 18–22, 2018.
 
-[9]  J. Fadhil and W. F. Mahmudy, "Pembuatan Sistem Rekomendasi Menggunakan Decision Tree dan Clustering," vol. 3, no. 1, 2007.
+[9] R. Ahuja, A. Solanki and A. Nayyar, "Movie Recommender System Using K-Means," 2019.
 
-[10]  A. Halim, H. Gohzali, D. M. Panjaitan and I. Maulana, "Sistem Rekomendasi Film menggunakan Bisecting K-Means d an Collaborative Filtering," CITISEE 2017, p. 37, 2017.
+[10]  J. Fadhil and W. F. Mahmudy, "Pembuatan Sistem Rekomendasi Menggunakan Decision Tree dan Clustering," vol. 3, no. 1, 2007.
+
+[11]  A. Halim, H. Gohzali, D. M. Panjaitan and I. Maulana, "Sistem Rekomendasi Film menggunakan Bisecting K-Means d an Collaborative Filtering," CITISEE 2017, p. 37, 2017.
 
