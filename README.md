@@ -223,18 +223,18 @@ Dataset ratings.csv berisi informasi tentang penilaian yang diberikan oleh pengg
 ## Modeling
 
 ### Content-Based Filtering
-Penjelasan Model:
-_Cosine similarity_ digunakan dalam _Content-Based Filtering_ untuk mengukur seberapa mirip dua vektor dalam ruang berdimensi banyak (_multidimensional space_) dengan mengukur _cosinus_ sudut antara kedua vektor. Algoritma ini cocok digunakan dalam sistem rekomendasi berbasis konten karena dapat mengukur kesamaan antara fitur-fitur film seperti genre). _Cosine similarity_ digunakan untuk menghasilkan matriks _similarity_ antar film. Cara kerja _cosine similarity_ yaitu menghitung _cosine_ dari sudut antara dua vektor. Jika dua vektor memiliki arah yang sama, maka _similarity score_ mendekati 1; jika mereka tegak lurus, _similarity score_ adalah 0; dan jika arahnya berlawanan, _similarity score_ adalah -1.
+
+_Cosine similarity_ digunakan dalam _Content-Based Filtering_ untuk mengukur seberapa mirip dua vektor dalam ruang berdimensi banyak (_multidimensional space_) dengan mengukur _cosinus_ sudut antara kedua vektor. Algoritma ini cocok digunakan dalam sistem rekomendasi berbasis konten karena dapat mengukur kesamaan antara fitur-fitur film seperti genre. _Cosine similarity_ digunakan untuk menghasilkan matriks _similarity_ antar film. Cara kerja _cosine similarity_ yaitu menghitung _cosine_ dari sudut antara dua vektor. Jika dua vektor memiliki arah yang sama, maka _similarity score_ mendekati 1; jika mereka tegak lurus, _similarity score_ adalah 0; dan jika arahnya berlawanan, _similarity score_ adalah -1.
 
 _Cosine Similarity_ antara vektor A dan B dihitung dengan rumus:
 
 **_cosine_similarity_(A, B) = (A • B) / (||A|| * ||B||)**
 
 Keterangan:
-- A • B: Hasil perkalian dot (dot product) antara vektor A dan B.
-- ||A|| dan ||B||: Magnitudo (norm) dari vektor A dan B, secara berturut-turut.
+- A • B: Hasil perkalian dot (_dot product_) antara vektor A dan B.
+- ||A|| dan ||B||: Magnitudo (_norm_) dari vektor A dan B, secara berturut-turut.
 
-Berikut adalah top 10 rekomendasi film berdasarkan dengan id 99750:
+Berikut adalah top 10 rekomendasi film berdasarkan dengan ID 99750:
 
 |   |                 title                |         genres         | movieId | Similarity Score |
 |:-:|:------------------------------------:|:----------------------:|:-------:|:----------------:|
@@ -249,7 +249,7 @@ Berikut adalah top 10 rekomendasi film berdasarkan dengan id 99750:
 | 8 |            Desperate Measures (1998) | Crime\|Drama\|Thriller |    1598 |              1.0 |
 | 9 |                   Playing God (1997) | Crime\|Drama\|Thriller |    1647 |              1.0 |
 
-Tabel 4. Rekomendasi berbasis konten berdasarkan film dengan id 99750
+Tabel 4. Rekomendasi berbasis konten berdasarkan film dengan ID 99750
 
 Kelebihan model dengan _cosine similarity_:
 
@@ -276,7 +276,7 @@ Pada model ini dilakukan _hyperparameter tuning_ menggunakan _GridSearchCV_ untu
 - 'tol': Toleransi untuk konvergensi.
 - 'random_state': _Seed_ untuk inisialisasi _centroid_ secara acak.
 
-Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna dengan id 247:
+Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna dengan ID 247:
 
 |   | movieId |                       title                       |                genres               |
 |:-:|:-------:|:-------------------------------------------------:|:-----------------------------------:|
@@ -291,7 +291,7 @@ Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna deng
 | 8 |    1721 |                                    Titanic (1997) |                      Drama\|Romance |
 | 9 |     541 |                               Blade Runner (1982) |            Action\|Sci-Fi\|Thriller |
 
-Tabel 5. Rekomendasi film dengan menggunakan teknik _clustering_ untuk pengguna dengan id 247
+Tabel 5. Rekomendasi film dengan menggunakan teknik _clustering_ untuk pengguna dengan ID 247
 
 Kelebihan model _KMeans Clustering_:
 
@@ -313,7 +313,7 @@ Pada model ini dilakukan _hyperparameter tuning_ untuk menemukan parameter terba
 - 'dropout': _Dropout rate_ untuk menghindari _overfitting_.
 - 'learning_rate': Tingkat belajar pada model _neural network_.
 
-Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna dengan id 37:
+Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna dengan ID 37:
 
 |   | movieId |                       title                       |                        genres                       |
 |:-:|:-------:|:-------------------------------------------------:|:---------------------------------------------------:|
@@ -328,7 +328,7 @@ Berikut adalah top 10 rekomendasi film berdasarkan model ini untuk pengguna deng
 | 8 |    4956 |                             Stunt Man, The (1980) | Action\|Adventure\|Comedy\|Drama\|Romance\|Thriller |
 | 9 |    9018 |                               Control Room (2004) |                                    Documentary\|War |
 
-Tabel 6. Rekomendasi film menggunakan teknik _deep learning_ untuk pengguna dengan id 37
+Tabel 6. Rekomendasi film menggunakan teknik _deep learning_ untuk pengguna dengan ID 37
 
 Kelebihan model _deep learning_:
 
